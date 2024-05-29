@@ -18,8 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
-import org.example.petshop.model.Agenda;
-import org.example.petshop.repository.AgendaRepository;
+import org.example.petshop.model.Agendamento;
+import org.example.petshop.repository.AgendamentoRepository;
 
 
 public class AgendarServiçosController implements Initializable{
@@ -85,8 +85,8 @@ public class AgendarServiçosController implements Initializable{
         String data = String.valueOf(DataPickerData.getValue());
         String observacoes = TextAreaObservacoes.getText();
 
-        Agenda novoaAgendamento = new Agenda(cliente, cpf, telefone, raca, valor, data, observacoes);
-        new AgendaRepository().cadastrar(novoaAgendamento);
+        Agendamento novoaAgendamento = new Agendamento(cliente, cpf, telefone, raca, valor, data, observacoes);
+        new AgendamentoRepository().cadastrar(novoaAgendamento);
         // Exibir mensagem de sucesso
         exibirMensagem("Sucesso", "Agendamento salvo com sucesso!");
     }
@@ -99,7 +99,7 @@ public class AgendarServiçosController implements Initializable{
         alert.showAndWait();
     }
 
-    private ObservableList<Agenda> cadastro = FXCollections.observableArrayList();
+    private ObservableList<Agendamento> cadastro = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

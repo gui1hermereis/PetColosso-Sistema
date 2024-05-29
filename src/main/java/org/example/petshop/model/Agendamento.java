@@ -1,6 +1,6 @@
 package org.example.petshop.model;
 
-public class Agenda {
+public class Agendamento {
     private int id;
     private String cliente;
     private String cpf;
@@ -83,7 +83,7 @@ public class Agenda {
         this.id = id;
     }
 
-    public Agenda(String cliente, String cpf, String telefone, String raca, String valor, String data, String observacoes) {
+    public Agendamento(String cliente, String cpf, String telefone, String raca, String valor, String data, String observacoes) {
         super();
         this.cliente = cliente;
         this.cpf = cpf;
@@ -94,5 +94,5 @@ public class Agenda {
         this.valor = valor;
     }
 
-    public Agenda() {}
+    public Agendamento() {}
 }

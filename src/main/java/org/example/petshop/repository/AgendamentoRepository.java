@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.example.petshop.model.Agenda;
+import org.example.petshop.model.Agendamento;
 
-public class AgendaRepository {
-    public void cadastrar(Agenda agenda) {
+public class AgendamentoRepository {
+    public void cadastrar(Agendamento agenda) {
         String sql = "INSERT INTO cliente (CLIENTE, CPF, TELEFONE, RACA, DATA, OBSERVACOES) VALUES (?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = null;
@@ -31,7 +31,7 @@ public class AgendaRepository {
         }
     }
 
-    public void atualizar(Agenda agenda) {
+    public void atualizar(Agendamento agenda) {
         String sql = "UPDATE CLIENTE SET CLIENTE=?, CPF =?, TELEFONE=?, RACA=?, DATA=?, OBSERVACOES=? WHERE idCliente=?";
 
         PreparedStatement ps = null;
@@ -54,7 +54,7 @@ public class AgendaRepository {
         }
     }
 
-    public void excluir(Agenda agenda) {
+    public void excluir(Agendamento agenda) {
         String sql = "DELETE FROM CLIENTE WHERE idCliente = ?";
         PreparedStatement ps = null;
 
@@ -69,10 +69,10 @@ public class AgendaRepository {
         }
     }
 
-    public List<Agenda> listar() {
+    public List<Agendamento> listar() {
         String sql = "SELECT * FROM CONTALUZ ORDER BY idContaluz DESC";
 
-        List<Agenda> conta = new ArrayList<>();
+        List<Agendamento> conta = new ArrayList<>();
 
         PreparedStatement ps = null;
         ResultSet rset = null;
@@ -83,7 +83,7 @@ public class AgendaRepository {
 
             while (rset.next()) {
 
-                Agenda agenda = new Agenda();
+                Agendamento agenda = new Agendamento();
 
                 agenda.setId(rset.getInt("idCliente"));
                 agenda.setCliente(rset.getString("cliente"));
