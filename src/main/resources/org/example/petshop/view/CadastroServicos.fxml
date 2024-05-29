@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450" prefWidth="600" style="-fx-background-color: #6495ED;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.CadastroServiçosController">
+   <ImageView layoutX="-330.0" layoutY="-67.0">
+      <Image url="@../icons/fundo.jpg" />
+   </ImageView>
+            <Label layoutX="140.0" layoutY="14.0" prefHeight="59.0" prefWidth="169.0" text="Serviços">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+        <TableView fx:id="TableViewCategorias" layoutX="309.0" layoutY="73.0" prefHeight="215.0" prefWidth="260.0">
+            <columns>
+                <TableColumn prefWidth="130.0" text="Serviço" />
+                <TableColumn prefWidth="130.0" text="Valor" />
+            </columns>
+        </TableView>
+            <Label layoutX="50.0" layoutY="73.0" text="Serviço:" />
+            <TextField fx:id="TextFieldServico" layoutX="48.0" layoutY="96.0" prefHeight="25.0" prefWidth="176.0" />
+            <Label layoutX="55.0" layoutY="131.0" text="Valor:" />
+            <TextField fx:id="TextFieldValor" layoutX="48.0" layoutY="155.0" prefHeight="25.0" prefWidth="176.0" />
+            <Button fx:id="BtnNovo" layoutX="51.0" layoutY="209.0" mnemonicParsing="false" onAction="#adicionarServico" prefHeight="25.0" prefWidth="80.0" text="Novo" />
+            <Button fx:id="BtnAlterar" layoutX="153.0" layoutY="209.0" mnemonicParsing="false" onAction="#alterarCategoria" prefHeight="25.0" prefWidth="80.0" text="Alterar" />
+            <Button fx:id="BtnSalvar" layoutX="51.0" layoutY="251.0" mnemonicParsing="false" onAction="#salvarCategoria" prefHeight="25.0" prefWidth="80.0" text="Salvar" />
+            <Button fx:id="BtnExcluir" alignment="CENTER" layoutX="153.0" layoutY="251.0" mnemonicParsing="false" onAction="#excluirCategoria" prefHeight="25.0" prefWidth="80.0" text="Excluir" />
+</AnchorPane>
