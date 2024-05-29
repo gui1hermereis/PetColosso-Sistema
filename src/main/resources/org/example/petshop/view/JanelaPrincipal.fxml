@@ -14,7 +14,8 @@
          <Font size="18.0" />
       </font>
    </Button>
-    <Button fx:id="buttnAgendar" layoutX="95.0" layoutY="47.0" mnemonicParsing="false" onAction="#acessarAgendamento" text="Agendar Serviço" />
-    <Button fx:id="buttonAgenda" layoutX="233.0" layoutY="47.0" mnemonicParsing="false" onAction="#acessarAgenda" text="Visualizar Agenda" />
-    <Button fx:id="buttonServiços" layoutX="375.0" layoutY="47.0" mnemonicParsing="false" onAction="#acessarServiços" text="Cadastrar Serviço" />
+    <Button fx:id="buttonCadastrarAgendamento" layoutX="52.0" layoutY="161.0" mnemonicParsing="false" onAction="#visualizarAgendamento" prefHeight="25.0" prefWidth="144.0" text="Visulizar Agendamentos" />
+    <Button fx:id="buttonCadastrarServicos" layoutX="52.0" layoutY="79.0" mnemonicParsing="false" onAction="#cadastrarServicos" prefHeight="25.0" prefWidth="144.0" text="Cadastrar Serviço" />
+    <Button fx:id="buttonCadastrarClientes" layoutX="52.0" layoutY="118.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="25.0" prefWidth="144.0" text="Cadastrar Cliente" />
+    <Button fx:id="buttonVisualizarAgenda" layoutX="52.0" layoutY="40.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="25.0" prefWidth="144.0" text="Agendar" />
 </AnchorPane>

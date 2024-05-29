@@ -2,45 +2,18 @@ package org.example.petshop.model;
 
 public class Agendamento {
     private int id;
-    private String cliente;
-    private String cpf;
-    private String telefone;
     private String raca;
     private String data;
     private String observacoes;
+    private int idCliente;
     private int idServico;
-    private String valor;
 
-    public String getValor() {
-        return valor;
+    public int getId() {
+        return id;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
-
-    public int getIdServico() {
-        return idServico;
-    }
-
-    public void setIdServico(int idServico) {
-        this.idServico = idServico;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRaca() {
@@ -51,47 +24,44 @@ public class Agendamento {
         this.raca = raca;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getData() {
+        return data;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getObservacoes() {
+        return observacoes;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 
-    public String getCliente() {
-        return cliente;
+    public int getIdServico() {
+        return idServico;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCliente() {
+
+        return idCliente;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public Agendamento(String cliente, String cpf, String telefone, String raca, String valor, String data, String observacoes) {
+    public Agendamento(String raca, String data, String observacoes) {
         super();
-        this.cliente = cliente;
-        this.cpf = cpf;
-        this.telefone = telefone;
         this.raca = raca;
         this.data = data;
         this.observacoes = observacoes;
-        this.valor = valor;
     }
 
     public Agendamento() {}

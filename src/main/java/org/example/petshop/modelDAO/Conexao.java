@@ -1,4 +1,4 @@
-package org.example.petshop.repository;
+package org.example.petshop.modelDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

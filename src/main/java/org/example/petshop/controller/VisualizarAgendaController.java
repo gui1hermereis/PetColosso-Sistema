@@ -25,7 +25,7 @@ import javafx.fxml.Initializable;
 import org.example.petshop.model.Agendamento;
 
 
-public class AgendaController implements Initializable {
+public class VisualizarAgendaController implements Initializable {
 
     @FXML
     private TextField TextFieldCliente;
@@ -66,7 +66,7 @@ public class AgendaController implements Initializable {
 
     private void abrirJanelaServicos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/CadastroServicos.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/CadastrarServicos.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();

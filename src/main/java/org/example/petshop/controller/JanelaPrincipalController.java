@@ -16,18 +16,48 @@ public class JanelaPrincipalController {
     private Button buttonSair;
 
     @FXML
-    private Button buttonAgenda;
+    private Button buttonCadastrarServicos;
 
     @FXML
-    private Button buttnAgendar;
+    private Button buttonVisualizarAgenda;
 
     @FXML
-    private Button buttonServiços;
+    private Button buttonCadastrarClientes;
 
     @FXML
-    void acessarAgenda(ActionEvent event) {
+    private Button buttonCadastrarAgendamento;
+
+    @FXML
+    void visualizarAgendamento(ActionEvent event) {
         try {
-            abrirTelas("Agenda");
+            abrirTelas("VisualizarAgenda");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void cadastrarServicos(ActionEvent event) {
+        try {
+            abrirTelas("CadastrarServicos");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void cadastrarCliente(ActionEvent event) {
+        try {
+            abrirTelas("CadastrarCliente");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void cadastrarAgendamento(ActionEvent event) {
+        try {
+            abrirTelas("CadastrarAgendamento");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,24 +70,6 @@ public class JanelaPrincipalController {
         try {
             stage.close();
             abrirTelas("Login");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void acessarAgendamento(ActionEvent event) {
-        try {
-            abrirTelas("AgendarServicos");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void acessarServiços(ActionEvent event) {
-        try {
-            abrirTelas("CadastroServicos");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,6 +5,7 @@ module org.example.petshop {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires java.desktop;
+    requires mysql.connector.j;
 
     exports org.example.petshop.controller;
     opens org.example.petshop.controller to javafx.fxml;

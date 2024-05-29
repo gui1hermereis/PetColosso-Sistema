@@ -19,10 +19,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import org.example.petshop.model.Agendamento;
-import org.example.petshop.repository.AgendamentoRepository;
+import org.example.petshop.modelDAO.CadastrarAgendamentoDAO;
 
 
-public class AgendarServiçosController implements Initializable{
+public class CadastrarAgendamentoController implements Initializable{
 
     @FXML
     private TextField TextFieldCliente;
@@ -61,7 +61,7 @@ public class AgendarServiçosController implements Initializable{
 
     private void abrirJanelaServicos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/CadastroServicos.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/CadastrarServicos.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
@@ -77,17 +77,12 @@ public class AgendarServiçosController implements Initializable{
 
     @FXML
     void salvarAgendamento(ActionEvent event) {
-        String cliente = TextFieldCliente.getText();
-        String cpf = TextFieldCpf.getText();
-        String telefone = TextFieldTelefone.getText();
         String raca = TextFieldRaca.getText();
-        String valor = TextFieldValor.getText();
         String data = String.valueOf(DataPickerData.getValue());
         String observacoes = TextAreaObservacoes.getText();
 
-        Agendamento novoaAgendamento = new Agendamento(cliente, cpf, telefone, raca, valor, data, observacoes);
-        new AgendamentoRepository().cadastrar(novoaAgendamento);
-        // Exibir mensagem de sucesso
+        Agendamento novoaAgendamento = new Agendamento(raca, data, observacoes);
+        new CadastrarAgendamentoDAO().cadastrar(novoaAgendamento);
         exibirMensagem("Sucesso", "Agendamento salvo com sucesso!");
     }
 
