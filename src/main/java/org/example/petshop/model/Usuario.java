@@ -40,11 +40,10 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public Usuario(String usuario, String senha, int tipo){
+    public Usuario(String usuario, String senha){
         super();
         this.usuario = usuario;
         this.senha = senha;
-        this.tipo = tipo;
     }
 
     public Usuario(){}
