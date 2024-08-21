@@ -12,28 +12,22 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
-import org.example.petshop.model.Agendamento;
 import org.example.petshop.model.Usuario;
 import org.example.petshop.modelDAO.LoginDAO;
-import org.example.petshop.model.Usuario;
 
-public class LoginController {
+public class LoginController implements Initializable{
 
     @FXML
     private TextField TextFieldUsuario;
 
     @FXML
-    private TextField TextFieldSenha;
+    private PasswordField PasswordFieldSenha;
 
     @FXML
     private Button BtnEntrar;
@@ -41,7 +35,7 @@ public class LoginController {
     @FXML
     private void Entrar() {
         String usuario = TextFieldUsuario.getText();
-        String senha = TextFieldSenha.getText();
+        String senha = PasswordFieldSenha.getText();
 
         Usuario logar = new Usuario(usuario, senha);
 
@@ -67,12 +61,10 @@ public class LoginController {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
-
         TextFieldUsuario.setEditable(true);
         TextFieldUsuario.setText("");
-        TextFieldSenha.setEditable(true);
-        TextFieldSenha.setText("");
-
+        PasswordFieldSenha.setEditable(true);
+        PasswordFieldSenha.setText("");
 
         Image entrar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Entrar = new ImageView(entrar);

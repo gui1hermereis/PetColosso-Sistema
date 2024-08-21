@@ -23,9 +23,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import org.example.petshop.model.Agendamento;
+import org.example.petshop.model.Cliente;
+import org.example.petshop.modelDAO.ClienteDAO;
 
 
-public class VisualizarAgendaController implements Initializable {
+public class EditarAgendamentoController implements Initializable {
 
     @FXML
     private TextField TextFieldCliente;
@@ -52,10 +54,7 @@ public class VisualizarAgendaController implements Initializable {
     private DatePicker DataPickerData;
 
     @FXML
-    private Button BtnAlterar;
-
-    @FXML
-    private Button BtnExcluir;
+    private Button BtnSalvar;
 
     private void abrirServicos() {
         String selecServ = ChoiceBoxServicos.getValue();
@@ -66,7 +65,7 @@ public class VisualizarAgendaController implements Initializable {
 
     private void abrirJanelaServicos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/CadastrarServicos.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/Servicos.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
@@ -81,48 +80,32 @@ public class VisualizarAgendaController implements Initializable {
     }
 
     @FXML
-    void alterarCadastro(ActionEvent event) {
-        TextFieldCliente.setEditable(true);
-        TextFieldCpf.setEditable(true);
-        TextFieldTelefone.setEditable(true);
-        TextFieldRaca.setEditable(true);
-        TextFieldValor.setEditable(true);
-        DataPickerData.setEditable(true);
-        TextAreaObservacoes.setEditable(true);
+    void editarAgendamento(ActionEvent event) {
     }
-
-    @FXML
-    void excluirCadastro (ActionEvent event) {
-    }
-
 
     private ObservableList<Agendamento> cadastro = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        TextFieldCliente.setEditable(false);
+        TextFieldCliente.setEditable(true);
         TextFieldCliente.setText("");
-        TextFieldCpf.setEditable(false);
+        TextFieldCpf.setEditable(true);
         TextFieldCpf.setText("");
-        TextFieldTelefone.setEditable(false);
+        TextFieldTelefone.setEditable(true);
         TextFieldTelefone.setText("");
-        TextFieldRaca.setEditable(false);
+        TextFieldRaca.setEditable(true);
         TextFieldRaca.setText("");
-        TextFieldValor.setEditable(false);
+        TextFieldValor.setEditable(true);
         TextFieldValor.setText("");
         DataPickerData.setEditable(true);
         TextAreaObservacoes.setEditable(true);
         TextAreaObservacoes.setText("");
 
-        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
-        ImageView excl = new ImageView(excluir);
-        BtnExcluir.setGraphic(excl);
-
-        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
-        ImageView alterar = new ImageView(alt);
-        alterar.setFitWidth(16);
-        alterar.setFitHeight(16);
-        BtnAlterar.setGraphic(alterar);
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
     }
 }

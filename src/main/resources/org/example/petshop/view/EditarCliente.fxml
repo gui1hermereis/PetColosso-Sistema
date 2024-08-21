@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450" prefWidth="600" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.CadastrarClienteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450" prefWidth="600" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.EditarClienteController">
     <ImageView layoutX="-330.0" layoutY="-66.0">
         <Image url="@../icons/fundo.jpg" />
     </ImageView>
-    <Label layoutX="196.0" layoutY="33.0" text="Cadastrar Cliente">
+    <Label layoutX="196.0" layoutY="33.0" text="Editar Cliente">
         <font>
             <Font name="Arial" size="27.0" />
         </font>
@@ -34,5 +34,5 @@
     <TextField fx:id="TextFieldCpf" layoutX="226.0" layoutY="191.0" prefHeight="25.0" prefWidth="150.0" />
     <TextField fx:id="TextFieldTelefone" layoutX="226.0" layoutY="279.0" prefHeight="25.0" prefWidth="150.0" />
 
-    <Button fx:id="BtnSalvar" layoutX="178.0" layoutY="356.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="25.0" prefWidth="245.0" text="Cadastrar" />
+    <Button fx:id="BtnSalvar" layoutX="178.0" layoutY="356.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="25.0" prefWidth="245.0" text="Salvar" />
 </AnchorPane>

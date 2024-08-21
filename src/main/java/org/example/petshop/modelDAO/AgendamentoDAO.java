@@ -1,14 +1,11 @@
 package org.example.petshop.modelDAO;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.example.petshop.model.Agendamento;
 
-public class CadastrarAgendamentoDAO {
+public class AgendamentoDAO {
     public void cadastrar(Agendamento agendamento) {
         String sql = "INSERT INTO cliente (CLIENTE, CPF, TELEFONE, RACA, DATA, OBSERVACOES) VALUES (?, ?, ?, ?, ?, ?)";
 

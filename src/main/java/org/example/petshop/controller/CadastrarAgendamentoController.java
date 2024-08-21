@@ -11,7 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.DatePicker;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,10 +23,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import org.example.petshop.model.Agendamento;
-import org.example.petshop.modelDAO.CadastrarAgendamentoDAO;
 
 
-public class CadastrarAgendamentoController implements Initializable{
+public class CadastrarAgendamentoController implements Initializable {
 
     @FXML
     private TextField TextFieldCliente;
@@ -51,7 +54,6 @@ public class CadastrarAgendamentoController implements Initializable{
     @FXML
     private Button BtnSalvar;
 
-
     private void abrirServicos() {
         String selecServ = ChoiceBoxServicos.getValue();
         if (selecServ!= null && selecServ.equals("Novo Serviço...")) {
@@ -61,7 +63,7 @@ public class CadastrarAgendamentoController implements Initializable{
 
     private void abrirJanelaServicos() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/CadastrarServicos.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/Servicos.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
@@ -77,49 +79,30 @@ public class CadastrarAgendamentoController implements Initializable{
 
     @FXML
     void salvarAgendamento(ActionEvent event) {
-        String raca = TextFieldRaca.getText();
-        String data = String.valueOf(DataPickerData.getValue());
-        String observacoes = TextAreaObservacoes.getText();
-
-        Agendamento novoaAgendamento = new Agendamento(raca, data, observacoes);
-        new CadastrarAgendamentoDAO().cadastrar(novoaAgendamento);
-        exibirMensagem("Sucesso", "Agendamento salvo com sucesso!");
     }
-
-    private void exibirMensagem(String titulo, String conteudo) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(conteudo);
-        alert.showAndWait();
-    }
-
     private ObservableList<Agendamento> cadastro = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        TextFieldCliente.setEditable(true);
+        TextFieldCliente.setEditable(false);
         TextFieldCliente.setText("");
-        TextFieldCpf.setEditable(true);
+        TextFieldCpf.setEditable(false);
         TextFieldCpf.setText("");
-        TextFieldTelefone.setEditable(true);
+        TextFieldTelefone.setEditable(false);
         TextFieldTelefone.setText("");
-        TextFieldRaca.setEditable(true);
+        TextFieldRaca.setEditable(false);
         TextFieldRaca.setText("");
-        TextFieldValor.setEditable(true);
+        TextFieldValor.setEditable(false);
         TextFieldValor.setText("");
-        TextFieldValor.setEditable(true);
-        TextFieldValor.setText("");
-        TextFieldValor.setEditable(true);
-        TextFieldValor.setText("");
+        DataPickerData.setEditable(true);
         TextAreaObservacoes.setEditable(true);
         TextAreaObservacoes.setText("");
 
-        ChoiceBoxServicos.setOnAction(event -> abrirServicos());
-
         Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
         BtnSalvar.setGraphic(Salvar);
     }
 }

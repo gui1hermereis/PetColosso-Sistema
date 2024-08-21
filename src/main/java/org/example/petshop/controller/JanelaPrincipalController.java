@@ -16,48 +16,36 @@ public class JanelaPrincipalController {
     private Button buttonSair;
 
     @FXML
-    private Button buttonCadastrarServicos;
+    private Button buttonAgenda;
 
     @FXML
-    private Button buttonVisualizarAgenda;
+    private Button buttonServicos;
 
     @FXML
-    private Button buttonCadastrarClientes;
+    private Button buttonClientes;
 
     @FXML
-    private Button buttonCadastrarAgendamento;
-
-    @FXML
-    void visualizarAgendamento(ActionEvent event) {
+    void agenda(ActionEvent event) {
         try {
-            abrirTelas("VisualizarAgenda");
+            abrirTelas("Agenda");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void cadastrarServicos(ActionEvent event) {
+    void servicos(ActionEvent event) {
         try {
-            abrirTelas("CadastrarServicos");
+            abrirTelas("Servicos");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void cadastrarCliente(ActionEvent event) {
+    void clientes(ActionEvent event) {
         try {
-            abrirTelas("CadastrarCliente");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void cadastrarAgendamento(ActionEvent event) {
-        try {
-            abrirTelas("CadastrarAgendamento");
+            abrirTelas("Clientes");
         } catch (IOException e) {
             e.printStackTrace();
         }

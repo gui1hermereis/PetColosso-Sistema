@@ -5,17 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.JanelaPrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.JanelaPrincipalController">
     <ImageView layoutX="-346.0" layoutY="-68.0">
         <Image url="@../icons/menu.jpg" />
     </ImageView>
-   <Button fx:id="buttonSair" layoutX="614.0" layoutY="40.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="96.0" text="SAIR">
+   <Button fx:id="buttonSair" layoutX="744.0" layoutY="21.0" mnemonicParsing="false" onAction="#sair" prefHeight="7.0" prefWidth="67.0" text="SAIR">
       <font>
          <Font size="18.0" />
       </font>
    </Button>
-    <Button fx:id="buttonCadastrarAgendamento" layoutX="52.0" layoutY="161.0" mnemonicParsing="false" onAction="#visualizarAgendamento" prefHeight="25.0" prefWidth="144.0" text="Visulizar Agendamentos" />
-    <Button fx:id="buttonCadastrarServicos" layoutX="52.0" layoutY="79.0" mnemonicParsing="false" onAction="#cadastrarServicos" prefHeight="25.0" prefWidth="144.0" text="Cadastrar Serviço" />
-    <Button fx:id="buttonCadastrarClientes" layoutX="52.0" layoutY="118.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="25.0" prefWidth="144.0" text="Cadastrar Cliente" />
-    <Button fx:id="buttonVisualizarAgenda" layoutX="52.0" layoutY="40.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="25.0" prefWidth="144.0" text="Agendar" />
+    <Button fx:id="buttonAgenda" layoutX="199.0" layoutY="35.0" mnemonicParsing="false" onAction="#agenda" prefHeight="50.0" prefWidth="145.0" text="Agenda" />
+    <Button fx:id="buttonServicos" layoutX="542.0" layoutY="35.0" mnemonicParsing="false" onAction="#servicos" prefHeight="50.0" prefWidth="145.0" text="Serviços" />
+    <Button fx:id="buttonClientes" layoutX="375.0" layoutY="35.0" mnemonicParsing="false" onAction="#clientes" prefHeight="50.0" prefWidth="145.0" text="Clientes" />
 </AnchorPane>

@@ -14,10 +14,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import org.example.petshop.model.Agendamento;
 import org.example.petshop.model.Cliente;
+import org.example.petshop.modelDAO.AgendamentoDAO;
 import org.example.petshop.modelDAO.ClienteDAO;
 
-public class CadastrarClienteController implements Initializable {
+public class EditarClienteController implements Initializable {
 
     @FXML
     private Button BtnSalvar;

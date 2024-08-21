@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550" prefWidth="850" style="-fx-background-color: #6495ED;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.ServicosController">
+   <ImageView layoutX="-305.0" layoutY="-38.0">
+      <Image url="@../icons/fundo.jpg" />
+   </ImageView>
+            <Label layoutX="324.0" layoutY="14.0" prefHeight="59.0" prefWidth="169.0" text="Serviços">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+        <TableView fx:id="TableViewCategorias" layoutX="228.0" layoutY="257.0" prefHeight="174.0" prefWidth="360.0">
+            <columns>
+                <TableColumn prefWidth="183.0" text="Serviço" />
+                <TableColumn prefWidth="176.0" text="Valor" />
+            </columns>
+        </TableView>
+    <Button fx:id="BtnCadastrar" layoutX="345.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="50.0" prefWidth="145.0" text="Editar" />
+    <Button fx:id="BtnEditar" layoutX="69.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
+    <Button fx:id="BtnExcluir" layoutX="617.0" layoutY="128.0" mnemonicParsing="false" onAction="#excluirServico" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
+</AnchorPane>

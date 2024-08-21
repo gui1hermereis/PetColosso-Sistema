@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450" prefWidth="600" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.CadastrarAgendamentoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450" prefWidth="600" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.EditarAgendamentoController">
     <ImageView layoutX="-330.0" layoutY="-67.0">
         <Image url="@../icons/fundo.jpg" />
     </ImageView>
-    <Label layoutX="172.0" layoutY="14.0" text="cadastrar Agendamento">
+    <Label layoutX="199.0" layoutY="14.0" text="Editar Agendamento">
         <font>
             <Font name="Arial" size="27.0" />
         </font>
@@ -64,5 +64,5 @@
     <TextArea fx:id="TextAreaObservacoes" layoutX="292.0" layoutY="227.0" prefHeight="106.0" prefWidth="245.0" />
     <DatePicker fx:id="DataPickerData" layoutX="339.0" layoutY="92.0" prefHeight="25.0" prefWidth="150.0" />
 
-    <Button fx:id="BtnSalvar" layoutX="300.0" layoutY="360.0" mnemonicParsing="false" onAction="#salvarAgendamento" prefHeight="25.0" prefWidth="245.0" text="Salvar" />
+    <Button fx:id="BtnSalvar" layoutX="300.0" layoutY="360.0" mnemonicParsing="false" onAction="#editarAgendamento" prefHeight="25.0" prefWidth="245.0" text="Salvar" />
 </AnchorPane>

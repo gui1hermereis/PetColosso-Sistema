@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550" prefWidth="850" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.AgendaController">
+   <ImageView layoutX="-330.0" layoutY="-67.0">
+      <Image url="@../icons/fundo.jpg" />
+   </ImageView>
+   <Label layoutX="312.0" layoutY="14.0" text="Agendandamentos">
+      <font>
+         <Font name="Arial" size="27.0" />
+      </font>
+   </Label>
+
+   <TableView layoutX="40.0" layoutY="207.0" prefHeight="298.0" prefWidth="772.0">
+      <columns>
+         <TableColumn prefWidth="110.0" text="Cliente" />
+         <TableColumn prefWidth="110.0" text="CPF" />
+         <TableColumn prefWidth="110.0" text="Telefone" />
+         <TableColumn prefWidth="110.0" text="Raça" />
+         <TableColumn prefWidth="110.0" text="Serviço" />
+         <TableColumn prefWidth="110.0" text="Valor" />
+         <TableColumn prefWidth="110.0" text="Data" />
+      </columns>
+   </TableView>
+
+   <Button fx:id="BtnCadastrar" layoutX="40.0" layoutY="112.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Cadastrar"/>
+   <Button fx:id="BtnEditar" layoutX="365.0" layoutY="112.0" mnemonicParsing="false" onAction="#editarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Editar"/>
+   <Button fx:id="BtnExcluir" layoutX="690.0" layoutY="112.0" mnemonicParsing="false" onAction="#excluirCadastro" prefHeight="39.0" prefWidth="122.0" text="Excluir"/>
+</AnchorPane>
