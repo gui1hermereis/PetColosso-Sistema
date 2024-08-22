@@ -9,12 +9,15 @@
     <ImageView layoutX="-346.0" layoutY="-68.0">
         <Image url="@../icons/menu.jpg" />
     </ImageView>
-   <Button fx:id="buttonSair" layoutX="744.0" layoutY="21.0" mnemonicParsing="false" onAction="#sair" prefHeight="7.0" prefWidth="67.0" text="SAIR">
+    <ImageView layoutX="301.0" layoutY="213.0">
+        <Image url="@../icons/logosemfundo.png" />
+    </ImageView>
+   <Button fx:id="buttonSair" layoutX="714.0" layoutY="14.0" mnemonicParsing="false" onAction="#sair" prefHeight="35.0" prefWidth="112.0" text="SAIR">
       <font>
-         <Font size="18.0" />
+         <Font size="16.0" />
       </font>
    </Button>
-    <Button fx:id="buttonAgenda" layoutX="199.0" layoutY="35.0" mnemonicParsing="false" onAction="#agenda" prefHeight="50.0" prefWidth="145.0" text="Agenda" />
-    <Button fx:id="buttonServicos" layoutX="542.0" layoutY="35.0" mnemonicParsing="false" onAction="#servicos" prefHeight="50.0" prefWidth="145.0" text="Serviços" />
-    <Button fx:id="buttonClientes" layoutX="375.0" layoutY="35.0" mnemonicParsing="false" onAction="#clientes" prefHeight="50.0" prefWidth="145.0" text="Clientes" />
+    <Button fx:id="buttonAgenda" layoutX="105.0" layoutY="85.0" mnemonicParsing="false" onAction="#agenda" prefHeight="50.0" prefWidth="145.0" text="Agenda" />
+    <Button fx:id="buttonServicos" layoutX="614.0" layoutY="85.0" mnemonicParsing="false" onAction="#servicos" prefHeight="50.0" prefWidth="145.0" text="Serviços" />
+    <Button fx:id="buttonClientes" layoutX="353.0" layoutY="85.0" mnemonicParsing="false" onAction="#clientes" prefHeight="50.0" prefWidth="145.0" text="Clientes" />
 </AnchorPane>

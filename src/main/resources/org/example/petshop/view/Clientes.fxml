@@ -9,20 +9,20 @@
    <ImageView layoutX="-330.0" layoutY="-66.0">
       <Image url="@../icons/fundo.jpg" />
    </ImageView>
-   <Label layoutX="359.0" layoutY="29.0" text="Clientes">
+   <Label layoutX="359.0" layoutY="28.0" text="Clientes">
       <font>
-         <Font name="Arial" size="27.0" />
+         <Font name="Arial" size="30.0" />
       </font>
    </Label>
-         <Button fx:id="BtnCadastrar" layoutX="69.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
-         <Button fx:id="BtnEditar" layoutX="345.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="50.0" prefWidth="145.0" text="Editar" />
-         <Button fx:id="BtnExcluir" layoutX="617.0" layoutY="128.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
-   <TableView fx:id="TableViewClientes" layoutX="127.0" layoutY="254.0" prefHeight="224.0" prefWidth="562.0">
+         <Button fx:id="BtnCadastrar" layoutX="63.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
+         <Button fx:id="BtnEditar" layoutX="341.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="50.0" prefWidth="145.0" text="Editar" />
+         <Button fx:id="BtnExcluir" layoutX="618.0" layoutY="128.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
+   <TableView fx:id="TableViewClientes" layoutX="63.0" layoutY="254.0" prefHeight="221.0" prefWidth="700.0">
       <columns>
-         <TableColumn fx:id="TableColumnId"  prefWidth="140.0" text="ID Cliente" />
-         <TableColumn fx:id="TableColumnNome"  prefWidth="140.0" text="Nome" />
-         <TableColumn fx:id="TableColumnCpf"  prefWidth="140.0" text="CPF" />
-         <TableColumn fx:id="TableColumnTelefone" prefWidth="140.0" text="Telefone" />
+         <TableColumn fx:id="TableColumnId" prefWidth="115.0" text="ID Cliente" />
+         <TableColumn fx:id="TableColumnNome" prefWidth="195.0" text="Nome" />
+         <TableColumn fx:id="TableColumnCpf" prefWidth="195.0" text="CPF" />
+         <TableColumn fx:id="TableColumnTelefone" prefWidth="195.0" text="Telefone" />
       </columns>
    </TableView>
 </AnchorPane>

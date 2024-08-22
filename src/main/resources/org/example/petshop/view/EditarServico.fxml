@@ -6,25 +6,26 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450" prefWidth="600" style="-fx-background-color: #6495ED;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.petshop.controller.EditarServicoController">
-    <ImageView layoutX="-305.0" layoutY="-38.0">
-        <Image url="@../icons/fundo.jpg" />
-    </ImageView>
-    <Label layoutX="239.0" layoutY="14.0" prefHeight="59.0" prefWidth="169.0" text="Serviços">
-        <font>
-            <Font size="36.0" />
-        </font>
-    </Label>
-    <Label layoutX="83.0" layoutY="62.0" text="Serviço:">
-        <font>
-            <Font size="16.0" />
-        </font>
-    </Label>
-    <Label layoutX="83.0" layoutY="62.0" text="Valor:">
-        <font>
-            <Font size="16.0" />
-        </font>
-    </Label>
-    <TextField fx:id="TextFieldServico" layoutX="212.0" layoutY="111.0" prefHeight="44.0" prefWidth="176.0" />
-    <TextField fx:id="TextFieldValor" layoutX="212.0" layoutY="246.0" prefHeight="44.0" prefWidth="176.0" />
-    <Button fx:id="BtnSalvar" layoutX="192.0" layoutY="333.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="37.0" prefWidth="216.0" text="Cadastrar" />
+<ImageView layoutX="-305.0" layoutY="-38.0">
+    <Image url="@../icons/fundo.jpg" />
+</ImageView>
+<Label layoutX="237.0" prefHeight="59.0" prefWidth="169.0" text="Serviços">
+    <font>
+        <Font size="36.0" />
+    </font>
+</Label>
+<Label layoutX="271.0" layoutY="91.0" text="Serviço">
+    <font>
+        <Font size="18.0" />
+    </font>
+</Label>
+<Label layoutX="279.0" layoutY="198.0" text="Valor">
+    <font>
+        <Font size="18.0" />
+    </font>
+</Label>
+
+<TextField fx:id="TextFieldServico" layoutX="200.0" layoutY="118.0" prefHeight="37.0" prefWidth="200.0" />
+<TextField fx:id="TextFieldValor" layoutX="200.0" layoutY="225.0" prefHeight="37.0" prefWidth="200.0" />
+<Button fx:id="BtnSalvar" layoutX="192.0" layoutY="333.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="37.0" prefWidth="216.0" text="Salvar" />
 </AnchorPane>

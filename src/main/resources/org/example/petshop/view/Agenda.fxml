@@ -29,7 +29,7 @@
       </columns>
    </TableView>
 
-   <Button fx:id="BtnCadastrar" layoutX="40.0" layoutY="112.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Cadastrar"/>
-   <Button fx:id="BtnEditar" layoutX="365.0" layoutY="112.0" mnemonicParsing="false" onAction="#editarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Editar"/>
-   <Button fx:id="BtnExcluir" layoutX="690.0" layoutY="112.0" mnemonicParsing="false" onAction="#excluirAgendamento" prefHeight="39.0" prefWidth="122.0" text="Excluir"/>
+   <Button fx:id="BtnCadastrar" layoutX="40.0" layoutY="112.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Cadastrar" />
+   <Button fx:id="BtnEditar" layoutX="364.0" layoutY="112.0" mnemonicParsing="false" onAction="#editarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Editar" />
+   <Button fx:id="BtnExcluir" layoutX="690.0" layoutY="112.0" mnemonicParsing="false" onAction="#excluirAgendamento" prefHeight="39.0" prefWidth="122.0" text="Excluir" />
 </AnchorPane>

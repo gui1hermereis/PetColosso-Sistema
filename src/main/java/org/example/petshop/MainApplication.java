@@ -12,7 +12,6 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            // Define o ícone da aplicação
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/org/example/petshop/icons/icone.png")));
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/Login.fxml"));
@@ -28,7 +27,6 @@ public class MainApplication extends Application {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
         launch();
     }

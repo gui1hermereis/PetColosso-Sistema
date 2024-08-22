@@ -9,15 +9,23 @@
     <ImageView layoutX="-305.0" layoutY="-38.0">
         <Image url="@../icons/fundo.jpg" />
     </ImageView>
-    <Label layoutX="239.0" layoutY="14.0" prefHeight="59.0" prefWidth="169.0" text="Serviços">
+    <Label layoutX="237.0" layoutY="14.0" prefHeight="59.0" prefWidth="169.0" text="Serviços">
         <font>
             <Font size="36.0" />
         </font>
     </Label>
+    <Label layoutX="271.0" layoutY="91.0" text="Serviço">
+        <font>
+            <Font size="18.0" />
+        </font>
+    </Label>
+    <Label layoutX="279.0" layoutY="198.0" text="Valor">
+        <font>
+            <Font size="18.0" />
+        </font>
+    </Label>
    
-    <Label layoutX="280.0" layoutY="81.0" text="Serviço:" />
-    <TextField fx:id="TextFieldServico" layoutX="212.0" layoutY="111.0" prefHeight="44.0" prefWidth="176.0" />
-    <Label layoutX="285.0" layoutY="217.0" text="Valor:" />
-    <TextField fx:id="TextFieldValor" layoutX="212.0" layoutY="246.0" prefHeight="44.0" prefWidth="176.0" />
+    <TextField fx:id="TextFieldServico" layoutX="200.0" layoutY="118.0" prefHeight="37.0" prefWidth="200.0" />
+    <TextField fx:id="TextFieldValor" layoutX="200.0" layoutY="225.0" prefHeight="37.0" prefWidth="200.0" />
     <Button fx:id="BtnSalvar" layoutX="192.0" layoutY="333.0" mnemonicParsing="false" onAction="#salvarServico" prefHeight="37.0" prefWidth="216.0" text="Cadastrar" />
 </AnchorPane>

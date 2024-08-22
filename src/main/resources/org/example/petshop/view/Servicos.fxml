@@ -9,19 +9,19 @@
    <ImageView layoutX="-305.0" layoutY="-38.0">
       <Image url="@../icons/fundo.jpg" />
    </ImageView>
-            <Label layoutX="324.0" layoutY="14.0" prefHeight="59.0" prefWidth="169.0" text="Serviços">
+            <Label layoutX="353.0" layoutY="34.0" prefHeight="50.0" prefWidth="145.0" text="Serviços">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-        <TableView fx:id="TableViewServicos" layoutX="153.0" layoutY="264.0" prefHeight="181.0" prefWidth="544.0">
+        <TableView fx:id="TableViewServicos" layoutX="120.0" layoutY="279.0" prefHeight="181.0" prefWidth="600.0">
             <columns>
-                <TableColumn fx:id="TableColumnId" prefWidth="183.0" text="ID" />
-                <TableColumn fx:id="TableColumnServico" prefWidth="183.0" text="Serviço" />
-                <TableColumn fx:id="TableColumnValor" prefWidth="176.0" text="Valor" />
+                <TableColumn fx:id="TableColumnId" prefWidth="120.0" text="ID" />
+                <TableColumn fx:id="TableColumnServico" prefWidth="240.0" text="Serviço" />
+                <TableColumn fx:id="TableColumnValor" prefWidth="240.0" text="Valor" />
             </columns>
         </TableView>
-    <Button fx:id="BtnCadastrar" layoutX="345.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="50.0" prefWidth="145.0" text="Editar" />
-    <Button fx:id="BtnEditar" layoutX="69.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
-    <Button fx:id="BtnExcluir" layoutX="617.0" layoutY="128.0" mnemonicParsing="false" onAction="#excluirServico" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
+    <Button fx:id="BtnCadastrar" layoutX="348.0" layoutY="162.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="50.0" prefWidth="145.0" text="Editar" />
+    <Button fx:id="BtnEditar" layoutX="48.0" layoutY="162.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
+    <Button fx:id="BtnExcluir" layoutX="648.0" layoutY="162.0" mnemonicParsing="false" onAction="#excluirServico" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
 </AnchorPane>

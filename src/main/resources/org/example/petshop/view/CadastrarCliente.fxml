@@ -9,30 +9,30 @@
     <ImageView layoutX="-330.0" layoutY="-66.0">
         <Image url="@../icons/fundo.jpg" />
     </ImageView>
-    <Label layoutX="196.0" layoutY="33.0" text="Cadastrar Cliente">
+    <Label layoutX="198.0" layoutY="31.0" text="Cadastrar Cliente">
         <font>
             <Font name="Arial" size="27.0" />
         </font>
     </Label>
-    <Label layoutX="275.0" layoutY="85.0" text="Nome">
+    <Label layoutX="273.0" layoutY="101.0" text="Nome">
         <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
         </font>
     </Label>
-    <Label layoutX="282.0" layoutY="166.0" text="CPF:">
+    <Label layoutX="280.0" layoutY="182.0" text="CPF:">
         <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
         </font>
     </Label>
-    <Label layoutX="265.0" layoutY="254.0" text="Telefone:">
+    <Label layoutX="261.0" layoutY="269.0" text="Telefone:">
         <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
         </font>
     </Label>
 
-    <TextField fx:id="TextFieldNome" layoutX="226.0" layoutY="110.0" prefHeight="25.0" prefWidth="150.0" />
-    <TextField fx:id="TextFieldCpf" layoutX="226.0" layoutY="191.0" prefHeight="25.0" prefWidth="150.0" />
-    <TextField fx:id="TextFieldTelefone" layoutX="226.0" layoutY="279.0" prefHeight="25.0" prefWidth="150.0" />
+    <TextField fx:id="TextFieldNome" layoutX="192.0" layoutY="128.0" prefHeight="32.0" prefWidth="210.0" />
+    <TextField fx:id="TextFieldCpf" layoutX="192.0" layoutY="209.0" prefHeight="32.0" prefWidth="210.0" />
+    <TextField fx:id="TextFieldTelefone" layoutX="193.0" layoutY="296.0" prefHeight="32.0" prefWidth="210.0" />
 
-    <Button fx:id="BtnSalvar" layoutX="178.0" layoutY="356.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="25.0" prefWidth="245.0" text="Cadastrar" />
+    <Button fx:id="BtnSalvar" layoutX="179.0" layoutY="379.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="38.0" prefWidth="248.0" text="Cadastrar" />
 </AnchorPane>
