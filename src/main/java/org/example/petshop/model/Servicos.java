@@ -29,8 +29,9 @@ public class Servicos {
         this.valor = valor;
     }
 
-    public Servicos(String descricao, float valor){
+    public Servicos(int id, String descricao, float valor){
         super();
+        this.id = id;
         this.descricao = descricao;
         this.valor = valor;
     }

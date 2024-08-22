@@ -2,9 +2,6 @@ package org.example.petshop.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,9 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
-import org.example.petshop.model.Agendamento;
 import org.example.petshop.model.Cliente;
-import org.example.petshop.modelDAO.AgendamentoDAO;
 import org.example.petshop.modelDAO.ClienteDAO;
 
 public class EditarClienteController implements Initializable {
@@ -33,15 +28,20 @@ public class EditarClienteController implements Initializable {
     @FXML
     private TextField TextFieldTelefone;
 
+    private Cliente cliente;
+
     @FXML
-    void cadastrarCliente(ActionEvent event) {
+    void editarCliente(ActionEvent event) {
         String nome = TextFieldNome.getText();
         String cpf = TextFieldCpf.getText();
         String telefone = TextFieldTelefone.getText();
 
-        Cliente cliente = new Cliente(nome, cpf, telefone);
-        new ClienteDAO().cadastrar(cliente);
-        exibirMensagem("Sucesso", "Cliente cadastrado com sucesso!");
+        cliente.setNome(nome);
+        cliente.setCpf(cpf);
+        cliente.setTelefone(telefone);
+
+        new ClienteDAO().editar(cliente);
+        exibirMensagem("Sucesso", "Cliente editado com sucesso!");
     }
 
     private void exibirMensagem(String titulo, String conteudo) {
@@ -54,7 +54,12 @@ public class EditarClienteController implements Initializable {
         });
     }
 
-    private ObservableList<Cliente> cliente = FXCollections.observableArrayList();
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+        TextFieldNome.setText(cliente.getNome());
+        TextFieldCpf.setText(cliente.getCpf());
+        TextFieldTelefone.setText(cliente.getTelefone());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

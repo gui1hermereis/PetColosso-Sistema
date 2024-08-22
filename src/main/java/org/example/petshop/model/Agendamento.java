@@ -5,8 +5,11 @@ public class Agendamento {
     private String raca;
     private String data;
     private String observacoes;
-    private int idCliente;
-    private int idServico;
+    private String clienteNome;
+    private String clienteCpf;
+    private String clienteTelefone;
+    private String servicoDescricao;
+    private String servicoValor;
 
     public int getId() {
         return id;
@@ -40,28 +43,57 @@ public class Agendamento {
         this.observacoes = observacoes;
     }
 
-    public int getIdServico() {
-        return idServico;
+    public String getClienteNome() {
+        return clienteNome;
     }
 
-    public void setIdServico(int idServico) {
-        this.idServico = idServico;
+    public void setClienteNome(String clienteNome) {
+        this.clienteNome = clienteNome;
     }
 
-    public int getIdCliente() {
-
-        return idCliente;
+    public String getServicoDescricao() {
+        return servicoDescricao;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setServicoDescricao(String servicoDescricao) {
+        this.servicoDescricao = servicoDescricao;
     }
 
-    public Agendamento(String raca, String data, String observacoes) {
+    public String getServicoValor() {
+        return servicoValor;
+    }
+
+    public void setServicoValor(String servicoValor) {
+        this.servicoValor = servicoValor;
+    }
+
+    public String getClienteTelefone() {
+        return clienteTelefone;
+    }
+
+    public void setClienteTelefone(String clienteTelefone) {
+        this.clienteTelefone = clienteTelefone;
+    }
+
+    public String getClienteCpf() {
+        return clienteCpf;
+    }
+
+    public void setClienteCpf(String clienteCpf) {
+        this.clienteCpf = clienteCpf;
+    }
+
+    public Agendamento(int id,String raca, String data, String observacoes, String clienteNome,String clienteCpf,String clienteTelefone, String servicoDescricao,String servicoValor) {
         super();
+        this.id = id;
         this.raca = raca;
         this.data = data;
         this.observacoes = observacoes;
+        this. clienteNome = clienteNome;
+        this. clienteCpf= clienteCpf;
+        this. clienteTelefone= clienteTelefone;
+        this.servicoDescricao = servicoDescricao;
+        this.servicoValor = servicoValor;
     }
 
     public Agendamento() {}

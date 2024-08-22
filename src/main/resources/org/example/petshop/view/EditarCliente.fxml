@@ -34,5 +34,5 @@
     <TextField fx:id="TextFieldCpf" layoutX="226.0" layoutY="191.0" prefHeight="25.0" prefWidth="150.0" />
     <TextField fx:id="TextFieldTelefone" layoutX="226.0" layoutY="279.0" prefHeight="25.0" prefWidth="150.0" />
 
-    <Button fx:id="BtnSalvar" layoutX="178.0" layoutY="356.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="25.0" prefWidth="245.0" text="Salvar" />
+    <Button fx:id="BtnSalvar" layoutX="178.0" layoutY="356.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="25.0" prefWidth="245.0" text="Salvar" />
 </AnchorPane>

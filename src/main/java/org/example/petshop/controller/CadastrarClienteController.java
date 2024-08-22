@@ -37,7 +37,7 @@ public class CadastrarClienteController implements Initializable {
         String cpf = TextFieldCpf.getText();
         String telefone = TextFieldTelefone.getText();
 
-        Cliente cliente = new Cliente(nome, cpf, telefone);
+        Cliente cliente = new Cliente(0,nome, cpf, telefone);
         new ClienteDAO().cadastrar(cliente);
         exibirMensagem("Sucesso", "Cliente cadastrado com sucesso!");
     }

@@ -14,15 +14,15 @@
          <Font name="Arial" size="27.0" />
       </font>
    </Label>
-         <Button fx:id="BtnCadastrar" layoutX="345.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="50.0" prefWidth="145.0" text="Editar" />
-         <Button fx:id="BtnEditar" layoutX="69.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
+         <Button fx:id="BtnCadastrar" layoutX="69.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
+         <Button fx:id="BtnEditar" layoutX="345.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="50.0" prefWidth="145.0" text="Editar" />
          <Button fx:id="BtnExcluir" layoutX="617.0" layoutY="128.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
-   <TableView layoutX="127.0" layoutY="254.0" prefHeight="224.0" prefWidth="562.0">
+   <TableView fx:id="TableViewClientes" layoutX="127.0" layoutY="254.0" prefHeight="224.0" prefWidth="562.0">
       <columns>
-         <TableColumn prefWidth="140.0" text="ID Cliente" />
-         <TableColumn prefWidth="140.0" text="Nome" />
-         <TableColumn prefWidth="140.0" text="CPF" />
-         <TableColumn prefWidth="140.0" text="Telefone" />
+         <TableColumn fx:id="TableColumnId"  prefWidth="140.0" text="ID Cliente" />
+         <TableColumn fx:id="TableColumnNome"  prefWidth="140.0" text="Nome" />
+         <TableColumn fx:id="TableColumnCpf"  prefWidth="140.0" text="CPF" />
+         <TableColumn fx:id="TableColumnTelefone" prefWidth="140.0" text="Telefone" />
       </columns>
    </TableView>
 </AnchorPane>

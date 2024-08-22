@@ -14,10 +14,11 @@
                   <Font size="36.0" />
                </font>
             </Label>
-        <TableView fx:id="TableViewCategorias" layoutX="228.0" layoutY="257.0" prefHeight="174.0" prefWidth="360.0">
+        <TableView fx:id="TableViewServicos" layoutX="153.0" layoutY="264.0" prefHeight="181.0" prefWidth="544.0">
             <columns>
-                <TableColumn prefWidth="183.0" text="Serviço" />
-                <TableColumn prefWidth="176.0" text="Valor" />
+                <TableColumn fx:id="TableColumnId" prefWidth="183.0" text="ID" />
+                <TableColumn fx:id="TableColumnServico" prefWidth="183.0" text="Serviço" />
+                <TableColumn fx:id="TableColumnValor" prefWidth="176.0" text="Valor" />
             </columns>
         </TableView>
     <Button fx:id="BtnCadastrar" layoutX="345.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="50.0" prefWidth="145.0" text="Editar" />

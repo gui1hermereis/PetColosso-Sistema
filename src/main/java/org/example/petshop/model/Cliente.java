@@ -38,8 +38,9 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Cliente (String nome, String cpf, String telefone){
+    public Cliente (int idCliente,String nome, String cpf, String telefone){
         super();
+        this.idCliente = idCliente;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;

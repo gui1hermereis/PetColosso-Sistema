@@ -28,7 +28,7 @@ public class ServicosDAO {
     }
 
     public void editar(Servicos servicos) {
-        String sql = "UPDATE servicos SET descricao = ?, valor = ? WHERE id = ?";
+        String sql = "UPDATE servicos SET descricao = ?, valor = ? WHERE idServico = ?";
 
         PreparedStatement ps = null;
 
@@ -47,7 +47,7 @@ public class ServicosDAO {
     }
 
     public void excluir(Servicos servicos) {
-        String sql1 = "DELETE FROM servicos WHERE id = ?";
+        String sql1 = "DELETE FROM servicos WHERE idServico = ?";
 
         PreparedStatement ps = null;
 
@@ -55,15 +55,13 @@ public class ServicosDAO {
             ps = Conexao.getConexao().prepareStatement(sql1);
             ps.setInt(1, servicos.getId());
             ps.execute();
-
             ps.close();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public List<Servicos> listar() {
+    public static List<Servicos> listar() {
         List<Servicos> resultado = new ArrayList<>();
         Statement smt = null;
         ResultSet resultSet = null;
@@ -74,6 +72,7 @@ public class ServicosDAO {
 
             while (resultSet.next()) {
                 Servicos c = new Servicos();
+                c.setId(resultSet.getInt("idServico"));
                 c.setDescricao(resultSet.getString("descricao"));
                 c.setValor(resultSet.getFloat("valor"));
 

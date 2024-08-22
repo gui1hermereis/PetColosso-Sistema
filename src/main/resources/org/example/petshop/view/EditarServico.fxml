@@ -26,5 +26,5 @@
     </Label>
     <TextField fx:id="TextFieldServico" layoutX="212.0" layoutY="111.0" prefHeight="44.0" prefWidth="176.0" />
     <TextField fx:id="TextFieldValor" layoutX="212.0" layoutY="246.0" prefHeight="44.0" prefWidth="176.0" />
-    <Button fx:id="BtnSalvar" layoutX="192.0" layoutY="333.0" mnemonicParsing="false" onAction="#salvarServico" prefHeight="37.0" prefWidth="216.0" text="Cadastrar" />
+    <Button fx:id="BtnSalvar" layoutX="192.0" layoutY="333.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="37.0" prefWidth="216.0" text="Cadastrar" />
 </AnchorPane>
