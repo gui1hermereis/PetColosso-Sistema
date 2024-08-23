@@ -2,27 +2,21 @@ package org.example.petshop.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.DatePicker;
-
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import org.example.petshop.model.Agendamento;
+import org.example.petshop.modelDAO.AgendaDAO;
 
 
 public class CadastrarAgendamentoController implements Initializable {
@@ -79,19 +73,35 @@ public class CadastrarAgendamentoController implements Initializable {
 
     @FXML
     void salvarAgendamento(ActionEvent event) {
+        String raca = TextFieldRaca.getText();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String data = DataPickerData.getValue().format(formatter);
+        String observacoes = TextAreaObservacoes.getText();
+
+        Agendamento agendamento = new Agendamento(0, raca, data, observacoes, 12, 2);
+        new AgendaDAO().cadastrar(agendamento);
+        exibirMensagem("Sucesso", "Cliente cadastrado com sucesso!");
     }
-    private ObservableList<Agendamento> cadastro = FXCollections.observableArrayList();
+
+    private void exibirMensagem(String titulo, String conteudo) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(conteudo);
+        alert.showAndWait().ifPresent(response -> {
+            ((Stage) BtnSalvar.getScene().getWindow()).close();
+        });
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         TextFieldCliente.setEditable(false);
         TextFieldCliente.setText("");
         TextFieldCpf.setEditable(false);
         TextFieldCpf.setText("");
         TextFieldTelefone.setEditable(false);
         TextFieldTelefone.setText("");
-        TextFieldRaca.setEditable(false);
+        TextFieldRaca.setEditable(true);
         TextFieldRaca.setText("");
         TextFieldValor.setEditable(false);
         TextFieldValor.setText("");

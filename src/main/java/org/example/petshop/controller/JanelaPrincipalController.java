@@ -16,7 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class JanelaPrincipalController implements Initializable{
+public class JanelaPrincipalController implements Initializable {
 
     @FXML
     private Button buttonSair;
@@ -29,6 +29,11 @@ public class JanelaPrincipalController implements Initializable{
 
     @FXML
     private Button buttonClientes;
+
+    @FXML
+    private Button buttonUsuarios;
+
+    private int nivelAcesso;
 
     @FXML
     void agenda(ActionEvent event) {
@@ -58,12 +63,29 @@ public class JanelaPrincipalController implements Initializable{
     }
 
     @FXML
+    void usuarios(ActionEvent event) {
+        try {
+            abrirTelas("Usuarios");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void sair(ActionEvent event) {
         Stage stage = (Stage) buttonSair.getScene().getWindow();
 
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/Login.fxml"));
+            Parent root = loader.load();
+            LoginController loginController = loader.getController();
+
             stage.close();
-            abrirTelas("Login");
+            Stage loginStage = new Stage();
+            loginStage.setScene(new Scene(root));
+            loginStage.setTitle("Login");
+            loginStage.setResizable(false);
+            loginStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,6 +99,15 @@ public class JanelaPrincipalController implements Initializable{
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+    }
+
+    public void setNivelAcesso(int nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+        atualizarVisibilidadeBotoes();
+    }
+
+    private void atualizarVisibilidadeBotoes() {
+        buttonUsuarios.setVisible(nivelAcesso == 1);
     }
 
     @Override

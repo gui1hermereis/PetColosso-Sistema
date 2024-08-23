@@ -34,12 +34,21 @@ public class EditarServicoController implements Initializable{
     @FXML
     void editarServico(ActionEvent event) {
         String descricao = TextFieldServico.getText();
-        float valor = Float.parseFloat(TextFieldValor.getText());
+        String valorTexto = TextFieldValor.getText();
+        float valor;
+
+        try {
+            valor = Float.parseFloat(valorTexto);
+        } catch (NumberFormatException e) {
+            exibirMensagem("Erro", "O valor inserido não é um número válido.");
+            return;
+        }
+
         servicos.setDescricao(descricao);
         servicos.setValor(valor);
 
         new ServicosDAO().editar(servicos);
-        exibirMensagem("Sucesso", "Cliente editado com sucesso!");
+        exibirMensagem("Sucesso", "Serviço editado com sucesso!");
     }
 
     public void setServico(Servicos servicos) {
@@ -60,12 +69,6 @@ public class EditarServicoController implements Initializable{
 
     @Override
     public void initialize(URL url,ResourceBundle rb) {
-
-        TextFieldServico.setEditable(true);
-        TextFieldServico.setText("");
-        TextFieldValor.setEditable(true);
-        TextFieldValor.setText("");
-
         Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Salvar = new ImageView(salvar);
         Salvar.setFitHeight(13);

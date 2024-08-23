@@ -2,8 +2,6 @@ package org.example.petshop.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,9 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
-import org.example.petshop.model.Cliente;
 import org.example.petshop.model.Servicos;
-import org.example.petshop.modelDAO.ClienteDAO;
 import org.example.petshop.modelDAO.ServicosDAO;
 
 public class CadastrarServicoController implements Initializable{
@@ -33,7 +29,14 @@ public class CadastrarServicoController implements Initializable{
     @FXML
     void salvarServico(ActionEvent event) {
         String descricao = TextFieldServico.getText();
-        float valor = Float.parseFloat(TextFieldValor.getText());
+        String valorTexto = TextFieldValor.getText();
+        float valor;
+        try {
+            valor = Float.parseFloat(valorTexto);
+        } catch (NumberFormatException e) {
+            exibirMensagem("Erro", "O valor inserido não é um número válido.");
+            return;
+        }
 
         Servicos servico = new Servicos(0, descricao, valor);
         new ServicosDAO().cadastrar(servico);
@@ -52,12 +55,6 @@ public class CadastrarServicoController implements Initializable{
 
     @Override
     public void initialize(URL url,ResourceBundle rb) {
-
-        TextFieldServico.setEditable(true);
-        TextFieldServico.setText("");
-        TextFieldValor.setEditable(true);
-        TextFieldValor.setText("");
-
         Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Salvar = new ImageView(salvar);
         Salvar.setFitHeight(13);

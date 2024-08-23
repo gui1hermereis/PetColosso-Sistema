@@ -1,12 +1,11 @@
 package org.example.petshop.model;
 
-public class Usuario {
+public class Usuarios {
 
     private int id;
     private String usuario;
     private String senha;
-
-    private int tipo;
+    private int nivelAcesso;
 
     public int getId() {
         return id;
@@ -32,19 +31,21 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public int getTipo() {
-        return tipo;
+    public int getNivelAcesso() {
+        return nivelAcesso;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
+    public void setNivelAcesso(int nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 
-    public Usuario(String usuario, String senha){
+    public Usuarios(int id,String usuario, String senha, int nivelAcesso){
         super();
+        this.id = id;
         this.usuario = usuario;
         this.senha = senha;
+        this.nivelAcesso = nivelAcesso;
     }
 
-    public Usuario(){}
+    public Usuarios(){}
 }

@@ -16,47 +16,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
-import org.example.petshop.model.Agendamento;
-import org.example.petshop.modelDAO.AgendaDAO;
+import org.example.petshop.model.Usuarios;
+import org.example.petshop.modelDAO.UsuariosDAO;
 
-public class AgendaController implements Initializable {
-
-    @FXML
-    private TableView<Agendamento> TableViewAgenda;
+public class UsuarioController implements Initializable {
 
     @FXML
-    private TableColumn<Agendamento, Integer> TableColumnId;
+    private TableView<Usuarios> TableViewUsuarios;
 
     @FXML
-    private TableColumn<Agendamento, String> TableColumnCliente;
+    private TableColumn<Usuarios, Integer> TableColumnId;
 
     @FXML
-    private TableColumn<Agendamento, String> TableColumnCpf;
+    private TableColumn<Usuarios, String> TableColumnUsuario;
 
     @FXML
-    private TableColumn<Agendamento, String> TableColumnTelefone;
+    private TableColumn<Usuarios, String> TableColumnSenha;
 
     @FXML
-    private TableColumn<Agendamento, String> TableColumnRaca;
-
-    @FXML
-    private TableColumn<Agendamento, String> TableColumnObservacoes;
-
-    @FXML
-    private TableColumn<Agendamento, String> TableColumnData;
-
-    @FXML
-    private TableColumn<Agendamento, String> TableColumnServico;
-
-    @FXML
-    private TableColumn<Agendamento, String> TableColumnValor;
+    private TableColumn<Usuarios, String> TableColumnNivel;
 
     @FXML
     private Button BtnCadastrar;
@@ -67,32 +51,30 @@ public class AgendaController implements Initializable {
     @FXML
     private Button BtnExcluir;
 
-    private Agendamento agendamentoSelecionado;
+    private Usuarios usuarioSelecionado;
+    private ObservableList<Usuarios> usuarios = FXCollections.observableArrayList();
+    private UsuariosDAO usuariosDAO = new UsuariosDAO();
 
-    private void carregarAgenda() {
-        List<Agendamento> agenda = agendaDAO.listar();
-        agendamento.setAll(agenda);
-        TableViewAgenda.setItems(agendamento);
-    }
+    private int nivelAcesso;
 
     @FXML
-    void cadastrarAgendamento(ActionEvent event) {
+    void cadastrarUsuario(ActionEvent event) {
         try {
-            abrirTelas("CadastrarAgendamento");
+            abrirTelas("CadastrarUsuarios");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    void editarAgendamento(ActionEvent event) {
-        if (agendamentoSelecionado != null) {
+    void editarUsuario(ActionEvent event) {
+        if (usuarioSelecionado != null) {
             try {
-                EditarAgendamentoController controller = (EditarAgendamentoController) abrirTelas("EditarAgendamento");
-                controller.setAgendamento(agendamentoSelecionado);
+                EditarUsuarioController controller = (EditarUsuarioController) abrirTelas("EditarUsuarios");
+                controller.setUsuarios(usuarioSelecionado);
 
-                Stage stage = (Stage) TableViewAgenda.getScene().getWindow();
-                stage.setOnHidden(e -> carregarAgenda());
+                Stage stage = (Stage) TableViewUsuarios.getScene().getWindow();
+                stage.setOnHidden(e -> carregarUsuarios());
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -101,17 +83,17 @@ public class AgendaController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Atenção");
             alert.setHeaderText(null);
-            alert.setContentText("Por favor, selecione um cliente para editar.");
+            alert.setContentText("Por favor, selecione um usuario para editar.");
             alert.showAndWait();
         }
     }
 
     @FXML
-    void excluirAgendamento(ActionEvent event) {
-        if (agendamentoSelecionado != null) {
+    void excluirUsuario(ActionEvent event) {
+        if (usuarioSelecionado != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmação de Exclusão");
-            alert.setHeaderText("Tem certeza que deseja excluir esse agendamento?");
+            alert.setHeaderText("Tem certeza que deseja excluir esse usuario?");
             alert.setContentText("Esta ação não poderá ser desfeita.");
 
             ButtonType buttonTypeConfirmar = new ButtonType("Confirmar");
@@ -120,15 +102,15 @@ public class AgendaController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == buttonTypeConfirmar) {
-                new AgendaDAO().excluir(agendamentoSelecionado);
-                agendamento.remove(agendamentoSelecionado);
-                carregarAgenda();
+                new UsuariosDAO().excluir(usuarioSelecionado);
+                usuarios.remove(usuarioSelecionado);
+                carregarUsuarios();
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Atenção");
             alert.setHeaderText(null);
-            alert.setContentText("Por favor, selecione um agendamento para excluir.");
+            alert.setContentText("Por favor, selecione um usuario para excluir.");
             alert.showAndWait();
         }
     }
@@ -147,26 +129,24 @@ public class AgendaController implements Initializable {
     }
 
     @FXML
-    void selecionarAgendamento(MouseEvent event) {
+    void selecionarUsuario(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            agendamentoSelecionado = TableViewAgenda.getSelectionModel().getSelectedItem();
+            usuarioSelecionado = TableViewUsuarios.getSelectionModel().getSelectedItem();
         }
     }
 
-    private ObservableList<Agendamento> agendamento = FXCollections.observableArrayList();
-    private AgendaDAO agendaDAO = new AgendaDAO();
+    private void carregarUsuarios() {
+        List<Usuarios> usuario = UsuariosDAO.listar();
+        usuarios.setAll(usuario);
+        TableViewUsuarios.setItems(usuarios);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
-        TableColumnCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteNome()));
-        TableColumnCpf.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteCpf()));
-        TableColumnTelefone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteTelefone()));
-        TableColumnServico.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicoDescricao()));
-        TableColumnRaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRaca()));
-        TableColumnData.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getData()));
-        TableColumnObservacoes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getObservacoes()));
-        TableColumnValor.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicoValor()));
+        TableColumnUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsuario()));
+        TableColumnSenha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSenha()));
+        TableColumnNivel.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getNivelAcesso()).asObject().asString());
 
         Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Salvar = new ImageView(salvar);
@@ -184,7 +164,14 @@ public class AgendaController implements Initializable {
         alterar.setFitHeight(16);
         BtnEditar.setGraphic(alterar);
 
-        carregarAgenda();
-        TableViewAgenda.setOnMouseClicked(this::selecionarAgendamento);
+        carregarUsuarios();
+        TableViewUsuarios.setOnMouseClicked(this::selecionarUsuario);
+    }
+
+    public void setNivelAcesso(int nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+        BtnCadastrar.setVisible(nivelAcesso == 1);
+        BtnEditar.setVisible(nivelAcesso == 1);
+        BtnExcluir.setVisible(nivelAcesso == 1);
     }
 }

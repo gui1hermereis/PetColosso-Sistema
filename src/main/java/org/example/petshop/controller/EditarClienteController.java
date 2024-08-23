@@ -63,13 +63,6 @@ public class EditarClienteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TextFieldNome.setEditable(true);
-        TextFieldNome.setText("");
-        TextFieldCpf.setEditable(true);
-        TextFieldCpf.setText("");
-        TextFieldTelefone.setEditable(true);
-        TextFieldTelefone.setText("");
-
         Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Salvar = new ImageView(salvar);
         Salvar.setFitHeight(13);

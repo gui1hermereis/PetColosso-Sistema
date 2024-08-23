@@ -1,5 +1,7 @@
 package org.example.petshop.model;
 
+import java.util.Date;
+
 public class Agendamento {
     private int id;
     private String raca;
@@ -10,6 +12,9 @@ public class Agendamento {
     private String clienteTelefone;
     private String servicoDescricao;
     private String servicoValor;
+    private int idCliente;
+    private int idServico;
+
 
     public int getId() {
         return id;
@@ -27,9 +32,7 @@ public class Agendamento {
         this.raca = raca;
     }
 
-    public String getData() {
-        return data;
-    }
+    public String getData() {return data;}
 
     public void setData(String data) {
         this.data = data;
@@ -47,9 +50,7 @@ public class Agendamento {
         return clienteNome;
     }
 
-    public void setClienteNome(String clienteNome) {
-        this.clienteNome = clienteNome;
-    }
+    public void setClienteNome(String clienteNome) {this.clienteNome = clienteNome;}
 
     public String getServicoDescricao() {
         return servicoDescricao;
@@ -83,6 +84,22 @@ public class Agendamento {
         this.clienteCpf = clienteCpf;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdServico() {
+        return idServico;
+    }
+
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
+    }
+
     public Agendamento(int id,String raca, String data, String observacoes, String clienteNome,String clienteCpf,String clienteTelefone, String servicoDescricao,String servicoValor) {
         super();
         this.id = id;
@@ -94,6 +111,16 @@ public class Agendamento {
         this. clienteTelefone= clienteTelefone;
         this.servicoDescricao = servicoDescricao;
         this.servicoValor = servicoValor;
+    }
+
+    public Agendamento(int id, String raca, String data, String observacoes, int idCliente, int idServico) {
+        super();
+        this.id = id;
+        this.raca = raca;
+        this.data = data;
+        this.observacoes = observacoes;
+        this.idCliente = idCliente;
+        this.idServico = idServico;
     }
 
     public Agendamento() {}

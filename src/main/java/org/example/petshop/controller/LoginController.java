@@ -2,26 +2,21 @@ package org.example.petshop.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
-import org.example.petshop.model.Usuario;
+import org.example.petshop.model.Usuarios;
 import org.example.petshop.modelDAO.LoginDAO;
 
-public class LoginController implements Initializable{
+public class LoginController implements Initializable {
 
     @FXML
     private TextField TextFieldUsuario;
@@ -37,13 +32,20 @@ public class LoginController implements Initializable{
         String usuario = TextFieldUsuario.getText();
         String senha = PasswordFieldSenha.getText();
 
-        Usuario logar = new Usuario(usuario, senha);
+        Usuarios logar = new Usuarios(0, usuario, senha, 0);
 
-        if (LoginDAO.logar(logar)) {
+        Usuarios usuarioLogado = LoginDAO.logar(logar);
+
+        if (usuarioLogado != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/JanelaPrincipal.fxml"));
                 Stage stage = (Stage) BtnEntrar.getScene().getWindow();
-                stage.setScene(new Scene(loader.load()));
+                Parent root = loader.load();
+
+                JanelaPrincipalController controller = loader.getController();
+                controller.setNivelAcesso(usuarioLogado.getNivelAcesso());
+
+                stage.setScene(new Scene(root));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,11 +63,6 @@ public class LoginController implements Initializable{
     }
 
     public void initialize(URL url, ResourceBundle rb) {
-        TextFieldUsuario.setEditable(true);
-        TextFieldUsuario.setText("");
-        PasswordFieldSenha.setEditable(true);
-        PasswordFieldSenha.setText("");
-
         Image entrar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Entrar = new ImageView(entrar);
         BtnEntrar.setGraphic(Entrar);
