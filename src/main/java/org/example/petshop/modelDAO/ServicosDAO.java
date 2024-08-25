@@ -78,7 +78,6 @@ public class ServicosDAO {
 
                 resultado.add(c);
             }
-
             return resultado;
         } catch (SQLException e) {
             e.printStackTrace();
