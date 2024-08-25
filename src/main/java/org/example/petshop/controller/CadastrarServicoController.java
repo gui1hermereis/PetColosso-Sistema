@@ -39,6 +39,9 @@ public class CadastrarServicoController implements Initializable{
     void salvarServico(ActionEvent event) {
         String descricao = TextFieldServico.getText();
         String valorTexto = TextFieldValor.getText();
+
+        valorTexto = valorTexto.replace(',', '.');
+
         float valor;
         try {
             valor = Float.parseFloat(valorTexto);

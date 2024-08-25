@@ -14,14 +14,13 @@
                   <Font size="36.0" />
                </font>
             </Label>
-        <TableView fx:id="TableViewServicos" layoutX="120.0" layoutY="279.0" prefHeight="181.0" prefWidth="600.0">
+        <TableView fx:id="TableViewServicos" layoutX="125.0" layoutY="280.0" prefHeight="180.0" prefWidth="602.0">
             <columns>
-                <TableColumn fx:id="TableColumnId" prefWidth="120.0" text="ID" />
-                <TableColumn fx:id="TableColumnServico" prefWidth="240.0" text="Serviço" />
-                <TableColumn fx:id="TableColumnValor" prefWidth="237.0" text="Valor" />
+                <TableColumn fx:id="TableColumnServico" prefWidth="300.0" text="Serviço" />
+                <TableColumn fx:id="TableColumnValor" prefWidth="300.0" text="Valor" />
             </columns>
         </TableView>
-    <Button fx:id="BtnCadastrar" layoutX="348.0" layoutY="162.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="50.0" prefWidth="145.0" text="Editar" />
-    <Button fx:id="BtnEditar" layoutX="48.0" layoutY="162.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
-    <Button fx:id="BtnExcluir" layoutX="648.0" layoutY="162.0" mnemonicParsing="false" onAction="#excluirServico" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
+    <Button fx:id="BtnCadastrar" layoutX="348.0" layoutY="137.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="50.0" prefWidth="145.0" text="Editar" />
+    <Button fx:id="BtnEditar" layoutX="53.0" layoutY="137.0" mnemonicParsing="false" onAction="#cadastrarServico" prefHeight="50.0" prefWidth="145.0" text="Cadastrar" />
+    <Button fx:id="BtnExcluir" layoutX="655.0" layoutY="137.0" mnemonicParsing="false" onAction="#excluirServico" prefHeight="50.0" prefWidth="145.0" text="Excluir" />
 </AnchorPane>

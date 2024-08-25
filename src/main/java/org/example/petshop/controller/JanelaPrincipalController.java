@@ -47,7 +47,8 @@ public class JanelaPrincipalController implements Initializable {
     @FXML
     void agenda(ActionEvent event) {
         try {
-            abrirTelas("Agenda");
+            AgendaController controller = (AgendaController) abrirTelas("Agenda");
+            controller.setNivelAcesso(nivelAcesso);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +84,6 @@ public class JanelaPrincipalController implements Initializable {
     @FXML
     void sair(ActionEvent event) {
         Stage stage = (Stage) buttonSair.getScene().getWindow();
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/Login.fxml"));
             Parent root = loader.load();
@@ -95,19 +95,23 @@ public class JanelaPrincipalController implements Initializable {
             loginStage.setTitle("Login");
             loginStage.setResizable(false);
             loginStage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void abrirTelas(String tela) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/example/petshop/view/" + tela + ".fxml"));
+    public Object abrirTelas(String tela) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/" + tela + ".fxml"));
+        Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("Tela");
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+
+        return loader.getController();
     }
 
     public void setNivelAcesso(int nivelAcesso) {

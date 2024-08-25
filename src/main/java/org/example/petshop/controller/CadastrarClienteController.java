@@ -13,6 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import org.example.petshop.model.Cliente;
 import org.example.petshop.modelDAO.ClienteDAO;
+import org.example.petshop.utils.MultiMaskTextFormatter;
+
+import javax.swing.text.MaskFormatter;
 
 public class CadastrarClienteController implements Initializable {
 
@@ -31,10 +34,13 @@ public class CadastrarClienteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
+        ImageView salvarView = new ImageView(salvar);
+        salvarView.setFitHeight(13);
+        salvarView.setFitWidth(13);
+        BtnSalvar.setGraphic(salvarView);
+
+        TextFieldCpf.setTextFormatter(new MultiMaskTextFormatter(MultiMaskTextFormatter.MaskType.CPF));
+        TextFieldTelefone.setTextFormatter(new MultiMaskTextFormatter(MultiMaskTextFormatter.MaskType.TELEFONE));
     }
 
     @FXML

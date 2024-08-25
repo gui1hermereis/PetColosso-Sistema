@@ -30,9 +30,6 @@ public class ClienteController implements Initializable {
     private TableView<Cliente> TableViewClientes;
 
     @FXML
-    private TableColumn<Cliente, Integer> TableColumnId;
-
-    @FXML
     private TableColumn<Cliente, String> TableColumnNome;
 
     @FXML
@@ -54,7 +51,6 @@ public class ClienteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getIdCliente()).asObject());
         TableColumnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
         TableColumnCpf.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCpf()));
         TableColumnTelefone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));

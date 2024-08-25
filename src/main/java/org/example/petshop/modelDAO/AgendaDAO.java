@@ -148,11 +148,11 @@ public class AgendaDAO {
         try {
             smt = Conexao.getConexao().createStatement();
             resultSet = smt.executeQuery("SELECT a.id, a.raca, a.data, a.observacoes, " +
-                    "c.nome AS clienteNome, c.cpf AS clienteCpf, c.telefone AS clienteTelefone, " +
+                    "c.nome AS clienteNome, c.cpf AS clienteCpf, c.telefone AS clienteTelefone," +
                     "s.descricao AS servicoDescricao, s.valor AS servicoValor " +
                     "FROM agendamento a " +
                     "JOIN cliente c ON a.idCliente = c.idCliente " +
-                    "JOIN servicos s ON a.idServico = s.idServico");
+                    "JOIN servicos s ON a.idServico = s.idServico ORDER BY a.data DESC;");
 
             while (resultSet.next()) {
                 Agendamento agendamento = new Agendamento();
@@ -169,6 +169,88 @@ public class AgendaDAO {
                 resultado.add(agendamento);
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
+    public List<Agendamento> listarPorData(String data) {
+        List<Agendamento> resultado = new ArrayList<>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT a.id, a.raca, a.data, a.observacoes, " +
+                "c.nome AS clienteNome, c.cpf AS clienteCpf, c.telefone AS clienteTelefone," +
+                "s.descricao AS servicoDescricao, s.valor AS servicoValor " +
+                "FROM agendamento a " +
+                "JOIN cliente c ON a.idCliente = c.idCliente " +
+                "JOIN servicos s ON a.idServico = s.idServico " +
+                "WHERE a.data = ? ORDER BY a.data DESC;";
+
+        try {
+            if (data == null || "Nenhum".equals(data)) {
+                return listar();
+            } else {
+                ps = Conexao.getConexao().prepareStatement(sql);
+                ps.setString(1, data);
+                rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    Agendamento agendamento = new Agendamento();
+                    agendamento.setId(rs.getInt("id"));
+                    agendamento.setRaca(rs.getString("raca"));
+                    agendamento.setData(rs.getString("data"));
+                    agendamento.setObservacoes(rs.getString("observacoes"));
+                    agendamento.setClienteNome(rs.getString("clienteNome"));
+                    agendamento.setClienteCpf(rs.getString("clienteCpf"));
+                    agendamento.setClienteTelefone(rs.getString("clienteTelefone"));
+                    agendamento.setServicoDescricao(rs.getString("servicoDescricao"));
+                    agendamento.setServicoValor(rs.getString("servicoValor"));
+
+                    resultado.add(agendamento);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
+    public List<Agendamento> listarPorServicos(String servico) {
+        List<Agendamento> resultado = new ArrayList<>();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT a.id, a.raca, a.data, a.observacoes, " +
+                "c.nome AS clienteNome, c.cpf AS clienteCpf, c.telefone AS clienteTelefone," +
+                "s.descricao AS servicoDescricao, s.valor AS servicoValor " +
+                "FROM agendamento a " +
+                "JOIN cliente c ON a.idCliente = c.idCliente " +
+                "JOIN servicos s ON a.idServico = s.idServico " +
+                "WHERE s.descricao = ? ORDER BY a.data DESC;";
+
+        try {
+            if (servico == null || "Nenhum".equals(servico)) {
+                return listar();
+            } else {
+                ps = Conexao.getConexao().prepareStatement(sql);
+                ps.setString(1, servico);
+                rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    Agendamento agendamento = new Agendamento();
+                    agendamento.setId(rs.getInt("id"));
+                    agendamento.setRaca(rs.getString("raca"));
+                    agendamento.setData(rs.getString("data"));
+                    agendamento.setObservacoes(rs.getString("observacoes"));
+                    agendamento.setClienteNome(rs.getString("clienteNome"));
+                    agendamento.setClienteCpf(rs.getString("clienteCpf"));
+                    agendamento.setClienteTelefone(rs.getString("clienteTelefone"));
+                    agendamento.setServicoDescricao(rs.getString("servicoDescricao"));
+                    agendamento.setServicoValor(rs.getString("servicoValor"));
+
+                    resultado.add(agendamento);
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

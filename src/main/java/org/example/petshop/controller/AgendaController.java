@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -24,15 +21,33 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import org.example.petshop.model.Agendamento;
+import org.example.petshop.model.Servicos;
 import org.example.petshop.modelDAO.AgendaDAO;
+import org.example.petshop.modelDAO.ServicosDAO;
+
 
 public class AgendaController implements Initializable {
 
     @FXML
-    private TableView<Agendamento> TableViewAgenda;
+    private Label labelFaturamento;
 
     @FXML
-    private TableColumn<Agendamento, Integer> TableColumnId;
+    private TextField TextFieldFaturamento;
+
+    @FXML
+    private Label labelData;
+
+    @FXML
+    private Label labelServico;
+
+    @FXML
+    private ChoiceBox<String> ChoiceBoxServicos;
+
+    @FXML
+    private ChoiceBox<String> ChoiceBoxData;
+
+    @FXML
+    private TableView<Agendamento> TableViewAgenda;
 
     @FXML
     private TableColumn<Agendamento, String> TableColumnCliente;
@@ -64,11 +79,16 @@ public class AgendaController implements Initializable {
     @FXML
     private Button BtnExcluir;
 
+    private List<Servicos> listaServicos;
+
     private Agendamento agendamentoSelecionado;
+
+    private int nivelAcesso;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
+        TextFieldFaturamento.setEditable(false);
+
         TableColumnCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteNome()));
         TableColumnCpf.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteCpf()));
         TableColumnTelefone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteTelefone()));
@@ -93,7 +113,42 @@ public class AgendaController implements Initializable {
         alterar.setFitHeight(16);
         BtnEditar.setGraphic(alterar);
 
+        ChoiceBoxServicos.getItems().add("Nenhum");
+
+        listaServicos = ServicosDAO.listar();
+        for (Servicos servico : listaServicos) {
+            ChoiceBoxServicos.getItems().add(servico.getDescricao());
+        }
+
+        ChoiceBoxServicos.getSelectionModel().select("Nenhum");
+
+        ChoiceBoxServicos.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                if ("Nenhum".equals(newValue)) {
+                } else {
+                    for (Servicos servico : listaServicos) {
+                        if (servico.getDescricao().equals(newValue)) {
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        ChoiceBoxData.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                filtrarAgendaPorData(newValue);
+            }
+        });
+
+        ChoiceBoxServicos.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                filtrarAgendaPorServico(newValue);
+            }
+        });
+
         carregarAgenda();
+        atualizarFaturamento();
         TableViewAgenda.setOnMouseClicked(this::selecionarAgendamento);
     }
 
@@ -101,6 +156,17 @@ public class AgendaController implements Initializable {
         List<Agendamento> agenda = agendaDAO.listar();
         agendamento.setAll(agenda);
         TableViewAgenda.setItems(agendamento);
+
+        ObservableList<String> datas = FXCollections.observableArrayList();
+        for (Agendamento agendamento : agenda) {
+            String data = agendamento.getData();
+            if (!datas.contains(data)) {
+                datas.add(data);
+            }
+        }
+        ChoiceBoxData.setItems(datas);
+        ChoiceBoxData.getItems().add(0, "Nenhum");
+        ChoiceBoxData.getSelectionModel().select("Nenhum");
     }
 
     @FXML
@@ -183,6 +249,64 @@ public class AgendaController implements Initializable {
         if (event.getClickCount() == 1) {
             agendamentoSelecionado = TableViewAgenda.getSelectionModel().getSelectedItem();
         }
+    }
+
+    private void atualizarFaturamento() {
+        double totalFaturamento = 0.0;
+
+        for (Agendamento agendamento : TableViewAgenda.getItems()) {
+            String valorServico = agendamento.getServicoValor();
+            try {
+                double valor = Double.parseDouble(valorServico);
+                totalFaturamento += valor;
+            } catch (NumberFormatException e) {
+                System.err.println("Valor de serviço inválido: " + valorServico);
+            }
+        }
+
+        TextFieldFaturamento.setText(String.format("R$: %.2f", totalFaturamento));
+    }
+
+    public void setNivelAcesso(int nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+        atualizarVisibilidadeFaturamento();
+    }
+
+    private void atualizarVisibilidadeFaturamento() {
+        labelFaturamento.setVisible(nivelAcesso == 1);
+        TextFieldFaturamento.setVisible(nivelAcesso == 1);
+        labelData.setVisible(nivelAcesso == 1);
+        ChoiceBoxData.setVisible(nivelAcesso == 1);
+        labelServico.setVisible(nivelAcesso == 1);
+        ChoiceBoxServicos.setVisible(nivelAcesso == 1);
+    }
+
+    private void filtrarAgendaPorData(String dataSelecionada) {
+        List<Agendamento> agenda;
+
+        if ("Nenhum".equals(dataSelecionada)) {
+            agenda = agendaDAO.listar();
+        } else {
+            agenda = agendaDAO.listarPorData(dataSelecionada);
+            ChoiceBoxServicos.getSelectionModel().select("Nenhum");
+        }
+
+        agendamento.setAll(agenda);
+        TableViewAgenda.setItems(agendamento);
+    }
+
+    private void filtrarAgendaPorServico(String servicoSelecionado) {
+        List<Agendamento> agenda;
+
+        if ("Nenhum".equals(servicoSelecionado)) {
+            agenda = agendaDAO.listar();
+        } else {
+            agenda = agendaDAO.listarPorServicos(servicoSelecionado);
+            ChoiceBoxData.getSelectionModel().select("Nenhum");
+        }
+
+        agendamento.setAll(agenda);
+        TableViewAgenda.setItems(agendamento);
     }
 
     private ObservableList<Agendamento> agendamento = FXCollections.observableArrayList();

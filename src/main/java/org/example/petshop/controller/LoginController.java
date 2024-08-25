@@ -29,8 +29,10 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image entrar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        Image entrar = new Image(getClass().getResource("/org/example/petshop/icons/entrar.png").toExternalForm());
         ImageView Entrar = new ImageView(entrar);
+        Entrar.setFitHeight(13);
+        Entrar.setFitWidth(13);
         BtnEntrar.setGraphic(Entrar);
     }
 

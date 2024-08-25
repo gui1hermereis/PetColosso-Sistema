@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import org.example.petshop.model.Cliente;
 import org.example.petshop.modelDAO.ClienteDAO;
+import org.example.petshop.utils.MultiMaskTextFormatter;
 
 public class EditarClienteController implements Initializable {
 
@@ -37,6 +38,9 @@ public class EditarClienteController implements Initializable {
         Salvar.setFitHeight(13);
         Salvar.setFitWidth(13);
         BtnSalvar.setGraphic(Salvar);
+
+        TextFieldCpf.setTextFormatter(new MultiMaskTextFormatter(MultiMaskTextFormatter.MaskType.CPF));
+        TextFieldTelefone.setTextFormatter(new MultiMaskTextFormatter(MultiMaskTextFormatter.MaskType.TELEFONE));
     }
 
     @FXML

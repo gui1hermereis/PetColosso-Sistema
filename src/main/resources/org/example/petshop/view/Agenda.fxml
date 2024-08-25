@@ -14,21 +14,40 @@
          <Font name="Arial" size="27.0" />
       </font>
    </Label>
+   <Label fx:id="labelFaturamento" layoutX="14.0" layoutY="511.0" prefHeight="25.0" prefWidth="152.0" text="Faturamento total: ">
+      <font>
+         <Font name="Arial" size="18.0" />
+      </font>
+   </Label>
 
-   <TableView fx:id="TableViewAgenda" layoutX="40.0" layoutY="207.0" prefHeight="298.0" prefWidth="772.0">
+   <Label fx:id="labelData" layoutX="715.0" layoutY="158.0" text="Filtro Data:">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+
+   <Label fx:id="labelServico" layoutX="37.0" layoutY="158.0" text="Filtro Serviço:">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+
+   <ChoiceBox fx:id="ChoiceBoxServicos" layoutX="37.0" layoutY="185.0" prefHeight="32.0" prefWidth="100.0" />
+   <ChoiceBox fx:id="ChoiceBoxData" layoutX="712.0" layoutY="185.0" prefHeight="32.0" prefWidth="100.0" />
+
+   <TableView fx:id="TableViewAgenda" layoutX="40.0" layoutY="234.0" prefHeight="259.0" prefWidth="772.0">
       <columns>
-         <TableColumn fx:id="TableColumnId" prefWidth="50.0" text="Id" />
          <TableColumn fx:id="TableColumnCliente" prefWidth="180.0" text="Cliente" />
-         <TableColumn fx:id="TableColumnCpf" prefWidth="90.0" text="CPF" />
-         <TableColumn fx:id="TableColumnTelefone" prefWidth="90.0" text="Telefone" />
+         <TableColumn fx:id="TableColumnCpf" prefWidth="100.0" text="CPF" />
+         <TableColumn fx:id="TableColumnTelefone" prefWidth="100.0" text="Telefone" />
          <TableColumn fx:id="TableColumnRaca" prefWidth="90.0" text="Raça" />
-         <TableColumn fx:id="TableColumnObservacoes" prefWidth="90.0" text="Observações" />
+         <TableColumn fx:id="TableColumnObservacoes" prefWidth="120.0" text="Observações" />
          <TableColumn fx:id="TableColumnData" prefWidth="90.0" text="Data" />
          <TableColumn fx:id="TableColumnServico" prefWidth="90.0" text="Servico" />
       </columns>
    </TableView>
-
-   <Button fx:id="BtnCadastrar" layoutX="40.0" layoutY="112.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Cadastrar" />
-   <Button fx:id="BtnEditar" layoutX="364.0" layoutY="112.0" mnemonicParsing="false" onAction="#editarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Editar" />
-   <Button fx:id="BtnExcluir" layoutX="690.0" layoutY="112.0" mnemonicParsing="false" onAction="#excluirAgendamento" prefHeight="39.0" prefWidth="122.0" text="Excluir" />
+   <TextField fx:id="TextFieldFaturamento" layoutX="166.0" layoutY="511.0" prefHeight="25.0" prefWidth="83.0" />
+   <Button fx:id="BtnCadastrar" layoutX="40.0" layoutY="87.0" mnemonicParsing="false" onAction="#cadastrarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Cadastrar" />
+   <Button fx:id="BtnEditar" layoutX="365.0" layoutY="87.0" mnemonicParsing="false" onAction="#editarAgendamento" prefHeight="39.0" prefWidth="122.0" text="Editar" />
+   <Button fx:id="BtnExcluir" layoutX="690.0" layoutY="87.0" mnemonicParsing="false" onAction="#excluirAgendamento" prefHeight="39.0" prefWidth="122.0" text="Excluir" />
 </AnchorPane>

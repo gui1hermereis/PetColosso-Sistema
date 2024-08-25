@@ -40,9 +40,6 @@ public class ServicosController implements Initializable{
     private TableView<Servicos> TableViewServicos;
 
     @FXML
-    private TableColumn<Servicos, Integer> TableColumnId;
-
-    @FXML
     private TableColumn<Servicos, String> TableColumnServico;
 
     @FXML
@@ -52,7 +49,6 @@ public class ServicosController implements Initializable{
 
     @Override
     public void initialize(URL url,ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         TableColumnServico.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescricao()));
         TableColumnValor.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getValor())));
 

@@ -16,6 +16,7 @@ import org.example.petshop.model.Agendamento;
 import org.example.petshop.model.Servicos;
 import org.example.petshop.modelDAO.AgendaDAO;
 import org.example.petshop.modelDAO.ServicosDAO;
+import org.example.petshop.utils.MultiMaskTextFormatter;
 
 public class EditarAgendamentoController implements Initializable {
 
@@ -49,6 +50,9 @@ public class EditarAgendamentoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        DataPickerData.setEditable(false);
+        TextFieldValor.setEditable(false);
+
         Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
         ImageView Salvar = new ImageView(salvar);
         Salvar.setFitHeight(13);
@@ -70,6 +74,8 @@ public class EditarAgendamentoController implements Initializable {
                 }
             }
         });
+
+        TextFieldCpf.setTextFormatter(new MultiMaskTextFormatter(MultiMaskTextFormatter.MaskType.CPF));
     }
 
     @FXML

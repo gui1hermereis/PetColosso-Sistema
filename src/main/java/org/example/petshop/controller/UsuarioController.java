@@ -31,9 +31,6 @@ public class UsuarioController implements Initializable {
     private TableView<Usuarios> TableViewUsuarios;
 
     @FXML
-    private TableColumn<Usuarios, Integer> TableColumnId;
-
-    @FXML
     private TableColumn<Usuarios, String> TableColumnUsuario;
 
     @FXML
@@ -57,7 +54,6 @@ public class UsuarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         TableColumnUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsuario()));
         TableColumnSenha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSenha()));
         TableColumnNivel.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getNivelAcesso()).asObject().asString());
