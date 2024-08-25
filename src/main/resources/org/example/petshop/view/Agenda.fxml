@@ -18,7 +18,7 @@
    <TableView fx:id="TableViewAgenda" layoutX="40.0" layoutY="207.0" prefHeight="298.0" prefWidth="772.0">
       <columns>
          <TableColumn fx:id="TableColumnId" prefWidth="50.0" text="Id" />
-         <TableColumn fx:id="TableColumnCliente" prefWidth="90.0" text="Cliente" />
+         <TableColumn fx:id="TableColumnCliente" prefWidth="180.0" text="Cliente" />
          <TableColumn fx:id="TableColumnCpf" prefWidth="90.0" text="CPF" />
          <TableColumn fx:id="TableColumnTelefone" prefWidth="90.0" text="Telefone" />
          <TableColumn fx:id="TableColumnRaca" prefWidth="90.0" text="Raça" />

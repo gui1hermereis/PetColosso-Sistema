@@ -18,7 +18,7 @@
             <columns>
                 <TableColumn fx:id="TableColumnId" prefWidth="120.0" text="ID" />
                 <TableColumn fx:id="TableColumnServico" prefWidth="240.0" text="Serviço" />
-                <TableColumn fx:id="TableColumnValor" prefWidth="240.0" text="Valor" />
+                <TableColumn fx:id="TableColumnValor" prefWidth="237.0" text="Valor" />
             </columns>
         </TableView>
     <Button fx:id="BtnCadastrar" layoutX="348.0" layoutY="162.0" mnemonicParsing="false" onAction="#editarServico" prefHeight="50.0" prefWidth="145.0" text="Editar" />
