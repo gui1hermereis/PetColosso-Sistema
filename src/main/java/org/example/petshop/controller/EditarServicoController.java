@@ -40,8 +40,10 @@ public class EditarServicoController implements Initializable{
     void editarServico(ActionEvent event) {
         String descricao = TextFieldServico.getText();
         String valorTexto = TextFieldValor.getText();
-        float valor;
 
+        valorTexto = valorTexto.replace(',', '.');
+
+        float valor;
         try {
             valor = Float.parseFloat(valorTexto);
         } catch (NumberFormatException e) {

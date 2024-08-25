@@ -7,9 +7,9 @@ import java.util.List;
 
 public class AgendaDAO {
     public boolean cadastrar(Agendamento agendamento) {
-        String sql1 = "SELECT IDCLIENTE FROM CLIENTE WHERE NOME LIKE ? AND CPF = ?";
+        String sql1 = "SELECT IDCLIENTE FROM CLIENTES WHERE NOME LIKE ? AND CPF = ?";
         String sql2 = "SELECT IDSERVICO FROM SERVICOS WHERE DESCRICAO LIKE ? AND VALOR = ?";
-        String sql = "INSERT INTO agendamento (RACA, DATA, OBSERVACOES, IDCLIENTE, IDSERVICO) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO AGENDAMENTOS (RACA, DATA, OBSERVACOES, IDCLIENTE, IDSERVICO) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement ps = null;
         PreparedStatement ps1 = null;
@@ -66,8 +66,8 @@ public class AgendaDAO {
     }
 
     public boolean editar(Agendamento agendamento) {
-        String sql = "UPDATE agendamento SET RACA = ?, DATA = ?,  OBSERVACOES = ?, IDCLIENTE = ?, IDSERVICO = ? WHERE id = ?";
-        String sql1 = "SELECT IDCLIENTE FROM CLIENTE WHERE NOME LIKE ? AND CPF = ?";
+        String sql = "UPDATE AGENDAMENTOS SET RACA = ?, DATA = ?,  OBSERVACOES = ?, IDCLIENTE = ?, IDSERVICO = ? WHERE id = ?";
+        String sql1 = "SELECT IDCLIENTE FROM CLIENTES WHERE NOME LIKE ? AND CPF = ?";
         String sql2 = "SELECT IDSERVICO FROM SERVICOS WHERE DESCRICAO LIKE ? AND VALOR = ?";
 
         PreparedStatement ps = null;
@@ -126,7 +126,7 @@ public class AgendaDAO {
     }
 
     public void excluir(Agendamento agendamento) {
-        String sql1 = "DELETE FROM agendamento WHERE id = ?";
+        String sql1 = "DELETE FROM AGENDAMENTOS WHERE id = ?";
 
         PreparedStatement ps = null;
 
@@ -150,8 +150,8 @@ public class AgendaDAO {
             resultSet = smt.executeQuery("SELECT a.id, a.raca, a.data, a.observacoes, " +
                     "c.nome AS clienteNome, c.cpf AS clienteCpf, c.telefone AS clienteTelefone," +
                     "s.descricao AS servicoDescricao, s.valor AS servicoValor " +
-                    "FROM agendamento a " +
-                    "JOIN cliente c ON a.idCliente = c.idCliente " +
+                    "FROM agendamentos a " +
+                    "JOIN clientes c ON a.idCliente = c.idCliente " +
                     "JOIN servicos s ON a.idServico = s.idServico ORDER BY a.data DESC;");
 
             while (resultSet.next()) {
@@ -182,8 +182,8 @@ public class AgendaDAO {
         String sql = "SELECT a.id, a.raca, a.data, a.observacoes, " +
                 "c.nome AS clienteNome, c.cpf AS clienteCpf, c.telefone AS clienteTelefone," +
                 "s.descricao AS servicoDescricao, s.valor AS servicoValor " +
-                "FROM agendamento a " +
-                "JOIN cliente c ON a.idCliente = c.idCliente " +
+                "FROM agendamentos a " +
+                "JOIN clientes c ON a.idCliente = c.idCliente " +
                 "JOIN servicos s ON a.idServico = s.idServico " +
                 "WHERE a.data = ? ORDER BY a.data DESC;";
 
@@ -223,8 +223,8 @@ public class AgendaDAO {
         String sql = "SELECT a.id, a.raca, a.data, a.observacoes, " +
                 "c.nome AS clienteNome, c.cpf AS clienteCpf, c.telefone AS clienteTelefone," +
                 "s.descricao AS servicoDescricao, s.valor AS servicoValor " +
-                "FROM agendamento a " +
-                "JOIN cliente c ON a.idCliente = c.idCliente " +
+                "FROM agendamentos a " +
+                "JOIN clientes c ON a.idCliente = c.idCliente " +
                 "JOIN servicos s ON a.idServico = s.idServico " +
                 "WHERE s.descricao = ? ORDER BY a.data DESC;";
 

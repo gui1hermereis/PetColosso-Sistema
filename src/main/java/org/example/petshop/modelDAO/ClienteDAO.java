@@ -11,7 +11,7 @@ import java.util.List;
 public class ClienteDAO {
 
     public void cadastrar(Cliente cliente) {
-        String sql = "INSERT INTO cliente (NOME, CPF, TELEFONE) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO clientes (NOME, CPF, TELEFONE) VALUES (?, ?, ?)";
 
         PreparedStatement ps = null;
 
@@ -29,7 +29,7 @@ public class ClienteDAO {
         }
     }
     public void editar(Cliente cliente) {
-        String sql = "UPDATE cliente SET nome = ?, cpf = ?,  telefone = ? WHERE idCliente = ?";
+        String sql = "UPDATE clientes SET nome = ?, cpf = ?,  telefone = ? WHERE idCliente = ?";
 
         PreparedStatement ps = null;
 
@@ -49,8 +49,8 @@ public class ClienteDAO {
     }
 
     public void excluir(Cliente cliente) {
-        String sql1 = "DELETE FROM agendamento WHERE idCliente = ?";
-        String sql2 = "DELETE FROM cliente WHERE idCliente = ?";
+        String sql1 = "DELETE FROM agendamentos WHERE idCliente = ?";
+        String sql2 = "DELETE FROM clientes WHERE idCliente = ?";
 
         PreparedStatement ps1 = null;
         PreparedStatement ps2 = null;
@@ -79,7 +79,7 @@ public class ClienteDAO {
 
         try {
             smt = Conexao.getConexao().createStatement();
-            resultSet = smt.executeQuery("SELECT * FROM cliente");
+            resultSet = smt.executeQuery("SELECT * FROM clientes");
 
             while (resultSet.next()) {
                 Cliente c = new Cliente();
