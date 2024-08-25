@@ -106,6 +106,8 @@ public class AgendaController implements Initializable {
     @FXML
     void cadastrarAgendamento(ActionEvent event) {
         try {
+            Stage stage = (Stage) TableViewAgenda.getScene().getWindow();
+            stage.close();
             abrirTelas("CadastrarAgendamento");
         } catch (IOException e) {
             e.printStackTrace();
@@ -116,6 +118,8 @@ public class AgendaController implements Initializable {
     void editarAgendamento(ActionEvent event) {
         if (agendamentoSelecionado != null) {
             try {
+                Stage currentStage = (Stage) TableViewAgenda.getScene().getWindow();
+                currentStage.close();
                 EditarAgendamentoController controller = (EditarAgendamentoController) abrirTelas("EditarAgendamento");
                 controller.setAgendamento(agendamentoSelecionado);
 

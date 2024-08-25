@@ -89,6 +89,8 @@ public class ClienteController implements Initializable {
     @FXML
     void cadastrarCliente(ActionEvent event) {
         try {
+            Stage currentStage = (Stage) TableViewClientes.getScene().getWindow();
+            currentStage.close();
             abrirTelas("CadastrarCliente");
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,6 +101,9 @@ public class ClienteController implements Initializable {
     void editarCliente(ActionEvent event) {
         if (clienteSelecionado != null) {
             try {
+                Stage currentStage = (Stage) TableViewClientes.getScene().getWindow();
+                currentStage.close();
+
                 EditarClienteController controller = (EditarClienteController) abrirTelas("EditarCliente");
                 controller.setCliente(clienteSelecionado);
 

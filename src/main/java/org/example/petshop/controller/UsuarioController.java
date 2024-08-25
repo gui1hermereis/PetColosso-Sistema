@@ -92,6 +92,8 @@ public class UsuarioController implements Initializable {
     @FXML
     void cadastrarUsuario(ActionEvent event) {
         try {
+            Stage currentStage = (Stage) TableViewUsuarios.getScene().getWindow();
+            currentStage.close();
             abrirTelas("CadastrarUsuarios");
         } catch (IOException e) {
             e.printStackTrace();
@@ -102,6 +104,8 @@ public class UsuarioController implements Initializable {
     void editarUsuario(ActionEvent event) {
         if (usuarioSelecionado != null) {
             try {
+                Stage currentStage = (Stage) TableViewUsuarios.getScene().getWindow();
+                currentStage.close();
                 EditarUsuarioController controller = (EditarUsuarioController) abrirTelas("EditarUsuarios");
                 controller.setUsuarios(usuarioSelecionado);
 

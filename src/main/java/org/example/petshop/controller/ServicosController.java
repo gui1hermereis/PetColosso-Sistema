@@ -86,6 +86,8 @@ public class ServicosController implements Initializable{
     @FXML
     void cadastrarServico(ActionEvent event) {
         try {
+            Stage currentStage = (Stage) TableViewServicos.getScene().getWindow();
+            currentStage.close();
             abrirTelas("CadastrarServico");
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,6 +98,8 @@ public class ServicosController implements Initializable{
     void editarServico(ActionEvent event) {
         if (servicoSelecionado != null) {
             try {
+                Stage currentStage = (Stage) TableViewServicos.getScene().getWindow();
+                currentStage.close();
                 EditarServicoController controller = (EditarServicoController) abrirTelas("EditarServico");
                 controller.setServico(servicoSelecionado);
 

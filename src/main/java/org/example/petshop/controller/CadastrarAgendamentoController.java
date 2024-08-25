@@ -45,6 +45,8 @@ public class CadastrarAgendamentoController implements Initializable {
 
     private List<Servicos> listaServicos;
 
+    private Stage agendaStage;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
