@@ -50,6 +50,33 @@ public class ServicosController implements Initializable{
 
     private Servicos servicoSelecionado;
 
+    @Override
+    public void initialize(URL url,ResourceBundle rb) {
+        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
+        TableColumnServico.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescricao()));
+        TableColumnValor.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getValor())));
+
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnCadastrar.setGraphic(Salvar);
+
+        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
+        ImageView excl = new ImageView(excluir);
+        BtnExcluir.setGraphic(excl);
+
+        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
+        ImageView alterar = new ImageView(alt);
+        alterar.setFitWidth(16);
+        alterar.setFitHeight(16);
+        BtnEditar.setGraphic(alterar);
+
+        carregarServicos();
+
+        TableViewServicos.setOnMouseClicked(this::selecionarServico);
+    }
+
     private void carregarServicos() {
         List<Servicos> servicos = ServicosDAO.listar();
         servico.setAll(servicos);
@@ -135,31 +162,4 @@ public class ServicosController implements Initializable{
     }
 
     private ObservableList<Servicos> servico = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL url,ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
-        TableColumnServico.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescricao()));
-        TableColumnValor.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getValor())));
-
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnCadastrar.setGraphic(Salvar);
-
-        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
-        ImageView excl = new ImageView(excluir);
-        BtnExcluir.setGraphic(excl);
-
-        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
-        ImageView alterar = new ImageView(alt);
-        alterar.setFitWidth(16);
-        alterar.setFitHeight(16);
-        BtnEditar.setGraphic(alterar);
-
-        carregarServicos();
-
-        TableViewServicos.setOnMouseClicked(this::selecionarServico);
-    }
 }

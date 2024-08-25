@@ -2,7 +2,6 @@ package org.example.petshop.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -30,6 +29,27 @@ public class EditarUsuarioController implements Initializable {
     private TextField TextFieldNivel;
 
     private Usuarios usuarios;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
+
+        TextFieldNivel.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue.length() > 1) {
+                    TextFieldNivel.setText(oldValue);
+                }
+                if (!TextFieldNivel.getText().matches("[01]*")) {
+                    TextFieldNivel.setText(oldValue);
+                }
+            }
+        });
+    }
 
     @FXML
     void editarUsuario(ActionEvent event) {
@@ -83,26 +103,5 @@ public class EditarUsuarioController implements Initializable {
         TextFieldUsuario.setText(usuarios.getUsuario());
         TextFieldSenha.setText("");
         TextFieldNivel.setText(String.valueOf(usuarios.getNivelAcesso()));
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
-
-        TextFieldNivel.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (newValue.length() > 1) {
-                    TextFieldNivel.setText(oldValue);
-                }
-                if (!TextFieldNivel.getText().matches("[01]*")) {
-                    TextFieldNivel.setText(oldValue);
-                }
-            }
-        });
     }
 }

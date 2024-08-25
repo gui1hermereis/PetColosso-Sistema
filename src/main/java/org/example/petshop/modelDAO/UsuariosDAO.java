@@ -2,7 +2,6 @@ package org.example.petshop.modelDAO;
 
 import org.example.petshop.model.Usuarios;
 import org.example.petshop.utils.CryptoUtil;
-
 import javax.crypto.SecretKey;
 import java.sql.*;
 import java.util.ArrayList;

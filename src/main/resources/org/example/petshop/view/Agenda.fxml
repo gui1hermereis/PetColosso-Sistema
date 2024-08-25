@@ -25,7 +25,6 @@
          <TableColumn fx:id="TableColumnObservacoes" prefWidth="90.0" text="Observações" />
          <TableColumn fx:id="TableColumnData" prefWidth="90.0" text="Data" />
          <TableColumn fx:id="TableColumnServico" prefWidth="90.0" text="Servico" />
-         <TableColumn fx:id="TableColumnValor" prefWidth="90.0" text="Valor" />
       </columns>
    </TableView>
 

@@ -52,6 +52,34 @@ public class ClienteController implements Initializable {
 
     private Cliente clienteSelecionado;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getIdCliente()).asObject());
+        TableColumnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
+        TableColumnCpf.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCpf()));
+        TableColumnTelefone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));
+
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnCadastrar.setGraphic(Salvar);
+
+        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
+        ImageView excl = new ImageView(excluir);
+        BtnExcluir.setGraphic(excl);
+
+        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
+        ImageView alterar = new ImageView(alt);
+        alterar.setFitWidth(16);
+        alterar.setFitHeight(16);
+        BtnEditar.setGraphic(alterar);
+
+        carregarClientes();
+
+        TableViewClientes.setOnMouseClicked(this::selecionarCliente);
+    }
+
     private void carregarClientes() {
         List<Cliente> clientes = clienteDAO.listar();
         cliente.setAll(clientes);
@@ -138,32 +166,4 @@ public class ClienteController implements Initializable {
 
     private ObservableList<Cliente> cliente = FXCollections.observableArrayList();
     private ClienteDAO clienteDAO = new ClienteDAO();
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getIdCliente()).asObject());
-        TableColumnNome.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNome()));
-        TableColumnCpf.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCpf()));
-        TableColumnTelefone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefone()));
-
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnCadastrar.setGraphic(Salvar);
-
-        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
-        ImageView excl = new ImageView(excluir);
-        BtnExcluir.setGraphic(excl);
-
-        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
-        ImageView alterar = new ImageView(alt);
-        alterar.setFitWidth(16);
-        alterar.setFitHeight(16);
-        BtnEditar.setGraphic(alterar);
-
-        carregarClientes();
-
-        TableViewClientes.setOnMouseClicked(this::selecionarCliente);
-    }
 }

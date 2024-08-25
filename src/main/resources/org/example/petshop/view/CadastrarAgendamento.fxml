@@ -24,12 +24,7 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <Label layoutX="144.0" layoutY="214.0" text="Telefone:">
-        <font>
-            <Font size="18.0" />
-        </font>
-    </Label>
-    <Label layoutX="159.0" layoutY="285.0" text="Raça:">
+    <Label layoutX="160.0" layoutY="223.0" text="Raça:">
         <font>
             <Font size="18.0" />
         </font>
@@ -44,7 +39,7 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <Label layoutX="147.0" layoutY="360.0" prefHeight="27.0" prefWidth="61.0" text="Data:">
+    <Label layoutX="160.0" layoutY="312.0" prefHeight="27.0" prefWidth="42.0" text="Data:">
         <font>
             <Font size="18.0" />
         </font>
@@ -56,11 +51,10 @@
     </Label>
     <TextField fx:id="TextFieldCliente" layoutX="88.0" layoutY="96.0" prefHeight="32.0" prefWidth="182.0" />
     <TextField fx:id="TextFieldCpf" layoutX="88.0" layoutY="168.0" prefHeight="32.0" prefWidth="182.0" />
-    <TextField fx:id="TextFieldRaca" layoutX="88.0" layoutY="311.0" prefHeight="32.0" prefWidth="182.0" />
-    <TextField fx:id="TextFieldTelefone" layoutX="88.0" layoutY="236.0" prefHeight="32.0" prefWidth="182.0" />
+    <TextField fx:id="TextFieldRaca" layoutX="90.0" layoutY="259.0" prefHeight="32.0" prefWidth="182.0" />
     <ChoiceBox fx:id="ChoiceBoxServicos" layoutX="509.0" layoutY="96.0" prefHeight="32.0" prefWidth="182.0" />
     <TextField fx:id="TextFieldValor" layoutX="509.0" layoutY="168.0" prefHeight="32.0" prefWidth="182.0" />
-    <DatePicker fx:id="DataPickerData" layoutX="89.0" layoutY="387.0" prefHeight="32.0" prefWidth="182.0" />
+    <DatePicker fx:id="DataPickerData" layoutX="90.0" layoutY="341.0" prefHeight="32.0" prefWidth="182.0" />
     <TextArea fx:id="TextAreaObservacoes" layoutX="450.0" layoutY="236.0" prefHeight="151.0" prefWidth="300.0" />
 
     <Button fx:id="BtnSalvar" layoutX="277.0" layoutY="441.0" mnemonicParsing="false" onAction="#salvarAgendamento" prefHeight="56.0" prefWidth="237.0" text="Salvar" />

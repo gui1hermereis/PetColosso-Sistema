@@ -1,7 +1,5 @@
 package org.example.petshop.model;
 
-import java.util.Date;
-
 public class Agendamento {
     private int id;
     private String raca;
@@ -14,7 +12,6 @@ public class Agendamento {
     private String servicoValor;
     private int idCliente;
     private int idServico;
-
 
     public int getId() {
         return id;
@@ -100,7 +97,7 @@ public class Agendamento {
         this.idServico = idServico;
     }
 
-    public Agendamento(int id,String raca, String data, String observacoes, String clienteNome,String clienteCpf,String clienteTelefone, String servicoDescricao,String servicoValor) {
+    public Agendamento(int id,String raca, String data, String observacoes, String clienteNome,String clienteCpf, String clienteTelefone, String servicoDescricao,String servicoValor) {
         super();
         this.id = id;
         this.raca = raca;
@@ -111,16 +108,6 @@ public class Agendamento {
         this. clienteTelefone= clienteTelefone;
         this.servicoDescricao = servicoDescricao;
         this.servicoValor = servicoValor;
-    }
-
-    public Agendamento(int id, String raca, String data, String observacoes, int idCliente, int idServico) {
-        super();
-        this.id = id;
-        this.raca = raca;
-        this.data = data;
-        this.observacoes = observacoes;
-        this.idCliente = idCliente;
-        this.idServico = idServico;
     }
 
     public Agendamento() {}

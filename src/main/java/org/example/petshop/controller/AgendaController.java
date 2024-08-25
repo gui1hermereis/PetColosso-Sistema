@@ -56,9 +56,6 @@ public class AgendaController implements Initializable {
     private TableColumn<Agendamento, String> TableColumnServico;
 
     @FXML
-    private TableColumn<Agendamento, String> TableColumnValor;
-
-    @FXML
     private Button BtnCadastrar;
 
     @FXML
@@ -68,6 +65,37 @@ public class AgendaController implements Initializable {
     private Button BtnExcluir;
 
     private Agendamento agendamentoSelecionado;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
+        TableColumnCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteNome()));
+        TableColumnCpf.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteCpf()));
+        TableColumnTelefone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteTelefone()));
+        TableColumnServico.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicoDescricao()));
+        TableColumnRaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRaca()));
+        TableColumnData.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getData()));
+        TableColumnObservacoes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getObservacoes()));
+
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnCadastrar.setGraphic(Salvar);
+
+        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
+        ImageView excl = new ImageView(excluir);
+        BtnExcluir.setGraphic(excl);
+
+        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
+        ImageView alterar = new ImageView(alt);
+        alterar.setFitWidth(16);
+        alterar.setFitHeight(16);
+        BtnEditar.setGraphic(alterar);
+
+        carregarAgenda();
+        TableViewAgenda.setOnMouseClicked(this::selecionarAgendamento);
+    }
 
     private void carregarAgenda() {
         List<Agendamento> agenda = agendaDAO.listar();
@@ -155,36 +183,4 @@ public class AgendaController implements Initializable {
 
     private ObservableList<Agendamento> agendamento = FXCollections.observableArrayList();
     private AgendaDAO agendaDAO = new AgendaDAO();
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
-        TableColumnCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteNome()));
-        TableColumnCpf.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteCpf()));
-        TableColumnTelefone.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClienteTelefone()));
-        TableColumnServico.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicoDescricao()));
-        TableColumnRaca.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRaca()));
-        TableColumnData.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getData()));
-        TableColumnObservacoes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getObservacoes()));
-        TableColumnValor.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServicoValor()));
-
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnCadastrar.setGraphic(Salvar);
-
-        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
-        ImageView excl = new ImageView(excluir);
-        BtnExcluir.setGraphic(excl);
-
-        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
-        ImageView alterar = new ImageView(alt);
-        alterar.setFitWidth(16);
-        alterar.setFitHeight(16);
-        BtnEditar.setGraphic(alterar);
-
-        carregarAgenda();
-        TableViewAgenda.setOnMouseClicked(this::selecionarAgendamento);
-    }
 }

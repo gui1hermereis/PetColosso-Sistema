@@ -30,6 +30,27 @@ public class CadastrarUsuarioController implements Initializable {
     @FXML
     private TextField TextFieldNivel;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
+
+        TextFieldNivel.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue.length() > 1) {
+                    TextFieldNivel.setText(oldValue);
+                }
+                if (!TextFieldNivel.getText().matches("[01]*")) {
+                    TextFieldNivel.setText(oldValue);
+                }
+            }
+        });
+    }
+
     @FXML
     void cadastrarUsuario(ActionEvent event) {
         String usuario = TextFieldUsuario.getText();
@@ -71,27 +92,6 @@ public class CadastrarUsuarioController implements Initializable {
         alert.setContentText(conteudo);
         alert.showAndWait().ifPresent(response -> {
             ((Stage) BtnSalvar.getScene().getWindow()).close();
-        });
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
-
-        TextFieldNivel.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (newValue.length() > 1) {
-                    TextFieldNivel.setText(oldValue);
-                }
-                if (!TextFieldNivel.getText().matches("[01]*")) {
-                    TextFieldNivel.setText(oldValue);
-                }
-            }
         });
     }
 }

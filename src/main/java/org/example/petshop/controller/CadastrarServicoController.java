@@ -26,6 +26,15 @@ public class CadastrarServicoController implements Initializable{
     @FXML
     private TextField TextFieldValor;
 
+    @Override
+    public void initialize(URL url,ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
+    }
+
     @FXML
     void salvarServico(ActionEvent event) {
         String descricao = TextFieldServico.getText();
@@ -51,14 +60,5 @@ public class CadastrarServicoController implements Initializable{
         alert.showAndWait().ifPresent(response -> {
             ((Stage) BtnSalvar.getScene().getWindow()).close();
         });
-    }
-
-    @Override
-    public void initialize(URL url,ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
     }
 }

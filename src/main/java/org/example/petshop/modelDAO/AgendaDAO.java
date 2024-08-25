@@ -6,48 +6,122 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AgendaDAO {
-
-    public void cadastrar(Agendamento agendamento) {
+    public boolean cadastrar(Agendamento agendamento) {
+        String sql1 = "SELECT IDCLIENTE FROM CLIENTE WHERE NOME LIKE ? AND CPF = ?";
+        String sql2 = "SELECT IDSERVICO FROM SERVICOS WHERE DESCRICAO LIKE ? AND VALOR = ?";
         String sql = "INSERT INTO agendamento (RACA, DATA, OBSERVACOES, IDCLIENTE, IDSERVICO) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement ps = null;
+        PreparedStatement ps1 = null;
+        PreparedStatement ps2 = null;
+        ResultSet rs1 = null;
+        ResultSet rs2 = null;
 
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);
-            ps.setString(1, agendamento.getRaca());
-            ps.setString(2, agendamento.getData());
-            ps.setString(3, agendamento.getObservacoes());
-            ps.setInt(4, agendamento.getIdCliente());
-            ps.setInt(5, agendamento.getIdServico());
+            ps1 = Conexao.getConexao().prepareStatement(sql1);
+            ps1.setString(1, "%" + agendamento.getClienteNome() + "%");
+            ps1.setString(2, agendamento.getClienteCpf());
+            rs1 = ps1.executeQuery();
 
-            ps.execute();
-            ps.close();
+            int idCliente = -1;
+            if (rs1.next()) {
+                idCliente = rs1.getInt("IDCLIENTE");
+            }
+
+            rs1.close();
+            ps1.close();
+
+            ps2 = Conexao.getConexao().prepareStatement(sql2);
+            ps2.setString(1, "%" + agendamento.getServicoDescricao() + "%");
+            ps2.setString(2, agendamento.getServicoValor());
+            rs2 = ps2.executeQuery();
+
+            int idServico = -1;
+            if (rs2.next()) {
+                idServico = rs2.getInt("IDSERVICO");
+            }
+
+            rs2.close();
+            ps2.close();
+
+            if (idCliente != -1 && idServico != -1) {
+                ps = Conexao.getConexao().prepareStatement(sql);
+                ps.setString(1, agendamento.getRaca());
+                ps.setString(2, agendamento.getData());
+                ps.setString(3, agendamento.getObservacoes());
+                ps.setInt(4, idCliente);
+                ps.setInt(5, idServico);
+
+                ps.execute();
+                ps.close();
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void editar(Agendamento agendamento) {
+    public boolean editar(Agendamento agendamento) {
         String sql = "UPDATE agendamento SET RACA = ?, DATA = ?,  OBSERVACOES = ?, IDCLIENTE = ?, IDSERVICO = ? WHERE id = ?";
-
+        String sql1 = "SELECT IDCLIENTE FROM CLIENTE WHERE NOME LIKE ? AND CPF = ?";
+        String sql2 = "SELECT IDSERVICO FROM SERVICOS WHERE DESCRICAO LIKE ? AND VALOR = ?";
 
         PreparedStatement ps = null;
+        PreparedStatement ps1 = null;
+        PreparedStatement ps2 = null;
+        ResultSet rs1 = null;
+        ResultSet rs2 = null;
 
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);
-            ps.setString(1, agendamento.getRaca());
-            ps.setString(2, agendamento.getData());
-            ps.setString(3, agendamento.getObservacoes());
-            ps.setInt(4, agendamento.getIdCliente());
-            ps.setInt(5, agendamento.getIdServico());
-            ps.setInt(6, agendamento.getId());
+            ps1 = Conexao.getConexao().prepareStatement(sql1);
+            ps1.setString(1, "%" + agendamento.getClienteNome() + "%");
+            ps1.setString(2, agendamento.getClienteCpf());
+            rs1 = ps1.executeQuery();
 
-            ps.execute();
-            ps.close();
+            int idCliente = -1;
+            if (rs1.next()) {
+                idCliente = rs1.getInt("IDCLIENTE");
+            }
+
+            rs1.close();
+            ps1.close();
+
+            ps2 = Conexao.getConexao().prepareStatement(sql2);
+            ps2.setString(1, "%" + agendamento.getServicoDescricao() + "%");
+            ps2.setString(2, agendamento.getServicoValor());
+            rs2 = ps2.executeQuery();
+
+            int idServico = -1;
+            if (rs2.next()) {
+                idServico = rs2.getInt("IDSERVICO");
+            }
+
+            rs2.close();
+            ps2.close();
+
+            if (idCliente != -1 && idServico != -1) {
+                ps = Conexao.getConexao().prepareStatement(sql);
+                ps.setString(1, agendamento.getRaca());
+                ps.setString(2, agendamento.getData());
+                ps.setString(3, agendamento.getObservacoes());
+                ps.setInt(4, idCliente);
+                ps.setInt(5, idServico);
+                ps.setInt(6, agendamento.getId());
+
+                ps.execute();
+                ps.close();
+                return true;
+            } else {
+                return false;
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

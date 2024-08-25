@@ -52,10 +52,42 @@ public class UsuarioController implements Initializable {
     private Button BtnExcluir;
 
     private Usuarios usuarioSelecionado;
-    private ObservableList<Usuarios> usuarios = FXCollections.observableArrayList();
-    private UsuariosDAO usuariosDAO = new UsuariosDAO();
 
     private int nivelAcesso;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
+        TableColumnUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsuario()));
+        TableColumnSenha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSenha()));
+        TableColumnNivel.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getNivelAcesso()).asObject().asString());
+
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnCadastrar.setGraphic(Salvar);
+
+        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
+        ImageView excl = new ImageView(excluir);
+        BtnExcluir.setGraphic(excl);
+
+        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
+        ImageView alterar = new ImageView(alt);
+        alterar.setFitWidth(16);
+        alterar.setFitHeight(16);
+        BtnEditar.setGraphic(alterar);
+
+        carregarUsuarios();
+        TableViewUsuarios.setOnMouseClicked(this::selecionarUsuario);
+    }
+
+    public void setNivelAcesso(int nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+        BtnCadastrar.setVisible(nivelAcesso == 1);
+        BtnEditar.setVisible(nivelAcesso == 1);
+        BtnExcluir.setVisible(nivelAcesso == 1);
+    }
 
     @FXML
     void cadastrarUsuario(ActionEvent event) {
@@ -128,6 +160,9 @@ public class UsuarioController implements Initializable {
         return loader.getController();
     }
 
+    private ObservableList<Usuarios> usuarios = FXCollections.observableArrayList();
+    private UsuariosDAO usuariosDAO = new UsuariosDAO();
+
     @FXML
     void selecionarUsuario(MouseEvent event) {
         if (event.getClickCount() == 1) {
@@ -139,39 +174,5 @@ public class UsuarioController implements Initializable {
         List<Usuarios> usuario = UsuariosDAO.listar();
         usuarios.setAll(usuario);
         TableViewUsuarios.setItems(usuarios);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        TableColumnId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
-        TableColumnUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUsuario()));
-        TableColumnSenha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSenha()));
-        TableColumnNivel.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getNivelAcesso()).asObject().asString());
-
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnCadastrar.setGraphic(Salvar);
-
-        Image excluir = new Image(getClass().getResource("/org/example/petshop/icons/excluir.png").toExternalForm());
-        ImageView excl = new ImageView(excluir);
-        BtnExcluir.setGraphic(excl);
-
-        Image alt = new Image(getClass().getResource("/org/example/petshop/icons/setas-flechas.png").toExternalForm());
-        ImageView alterar = new ImageView(alt);
-        alterar.setFitWidth(16);
-        alterar.setFitHeight(16);
-        BtnEditar.setGraphic(alterar);
-
-        carregarUsuarios();
-        TableViewUsuarios.setOnMouseClicked(this::selecionarUsuario);
-    }
-
-    public void setNivelAcesso(int nivelAcesso) {
-        this.nivelAcesso = nivelAcesso;
-        BtnCadastrar.setVisible(nivelAcesso == 1);
-        BtnEditar.setVisible(nivelAcesso == 1);
-        BtnExcluir.setVisible(nivelAcesso == 1);
     }
 }

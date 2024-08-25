@@ -2,8 +2,6 @@ package org.example.petshop.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,9 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
-import org.example.petshop.model.Cliente;
 import org.example.petshop.model.Servicos;
-import org.example.petshop.modelDAO.ClienteDAO;
 import org.example.petshop.modelDAO.ServicosDAO;
 
 public class EditarServicoController implements Initializable{
@@ -30,6 +26,15 @@ public class EditarServicoController implements Initializable{
     private TextField TextFieldValor;
 
     private Servicos servicos;
+
+    @Override
+    public void initialize(URL url,ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
+    }
 
     @FXML
     void editarServico(ActionEvent event) {
@@ -65,14 +70,5 @@ public class EditarServicoController implements Initializable{
         alert.showAndWait().ifPresent(response -> {
             ((Stage) BtnSalvar.getScene().getWindow()).close();
         });
-    }
-
-    @Override
-    public void initialize(URL url,ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
     }
 }

@@ -27,6 +27,13 @@ public class LoginController implements Initializable {
     @FXML
     private Button BtnEntrar;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Image entrar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Entrar = new ImageView(entrar);
+        BtnEntrar.setGraphic(Entrar);
+    }
+
     @FXML
     private void Entrar() {
         String usuario = TextFieldUsuario.getText();
@@ -60,11 +67,5 @@ public class LoginController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(conteudo);
         alert.showAndWait();
-    }
-
-    public void initialize(URL url, ResourceBundle rb) {
-        Image entrar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Entrar = new ImageView(entrar);
-        BtnEntrar.setGraphic(Entrar);
     }
 }

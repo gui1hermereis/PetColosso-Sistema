@@ -1,27 +1,21 @@
 package org.example.petshop.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import java.time.format.DateTimeFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 import org.example.petshop.model.Agendamento;
+import org.example.petshop.model.Servicos;
 import org.example.petshop.modelDAO.AgendaDAO;
+import org.example.petshop.modelDAO.ServicosDAO;
 
 public class EditarAgendamentoController implements Initializable {
 
@@ -30,9 +24,6 @@ public class EditarAgendamentoController implements Initializable {
 
     @FXML
     private TextField TextFieldCpf;
-
-    @FXML
-    private TextField TextFieldTelefone;
 
     @FXML
     private TextField TextFieldRaca;
@@ -54,27 +45,31 @@ public class EditarAgendamentoController implements Initializable {
 
     private Agendamento agendamento;
 
-    private void abrirServicos() {
-        String selecServ = ChoiceBoxServicos.getValue();
-        if (selecServ!= null && selecServ.equals("Novo Serviço...")) {
-            abrirJanelaServicos();
+    private List<Servicos> listaServicos;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
+
+        listaServicos = ServicosDAO.listar();
+        for (Servicos servico : listaServicos) {
+            ChoiceBoxServicos.getItems().add(servico.getDescricao());
         }
-    }
 
-    private void abrirJanelaServicos() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/petshop/view/Servicos.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Serviços");
-
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ChoiceBoxServicos.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                for (Servicos servico : listaServicos) {
+                    if (servico.getDescricao().equals(newValue)) {
+                        TextFieldValor.setText(String.valueOf(servico.getValor()));
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     @FXML
@@ -83,15 +78,26 @@ public class EditarAgendamentoController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String data = DataPickerData.getValue().format(formatter);
         String observacoes = TextAreaObservacoes.getText();
+        String Clientenome = TextFieldCliente.getText();
+        String Clientecpf = TextFieldCpf.getText();
+        String servicoDescricao = ChoiceBoxServicos.getValue();
+        String servicoValor = TextFieldValor.getText();
 
         agendamento.setRaca(raca);
         agendamento.setData(data);
         agendamento.setObservacoes(observacoes);
-        agendamento.setIdCliente(12);
-        agendamento.setIdServico(2);
+        agendamento.setClienteNome(Clientenome);
+        agendamento.setClienteCpf(Clientecpf);
+        agendamento.setServicoDescricao(servicoDescricao);
+        agendamento.setServicoValor(servicoValor);
 
-        new AgendaDAO().editar(agendamento);
-        exibirMensagem("Sucesso", "Cliente editado com sucesso!");
+        boolean sucesso = new AgendaDAO().editar(agendamento);
+
+        if (sucesso) {
+            exibirMensagem("Sucesso", "Agendamento editado com sucesso!");
+        } else {
+            exibirMensagem("Erro", "Cliente não encontrado. O agendamento não foi realizado.");
+        }
     }
 
     private void exibirMensagem(String titulo, String conteudo) {
@@ -111,14 +117,9 @@ public class EditarAgendamentoController implements Initializable {
         LocalDate data = LocalDate.parse(agendamento.getData(), formatter);
         DataPickerData.setValue(data);
         TextAreaObservacoes.setText(agendamento.getObservacoes());
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
+        TextFieldCliente.setText(agendamento.getClienteNome());
+        TextFieldCpf.setText(agendamento.getClienteCpf());
+        ChoiceBoxServicos.setValue(agendamento.getServicoDescricao());
+        TextFieldValor.setText(agendamento.getServicoValor());
     }
 }

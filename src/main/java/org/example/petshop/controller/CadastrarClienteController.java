@@ -2,9 +2,6 @@ package org.example.petshop.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -31,6 +28,15 @@ public class CadastrarClienteController implements Initializable {
     @FXML
     private TextField TextFieldTelefone;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
+    }
+
     @FXML
     void cadastrarCliente(ActionEvent event) {
         String nome = TextFieldNome.getText();
@@ -50,14 +56,5 @@ public class CadastrarClienteController implements Initializable {
         alert.showAndWait().ifPresent(response -> {
             ((Stage) BtnSalvar.getScene().getWindow()).close();
         });
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
     }
 }

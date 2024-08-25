@@ -35,6 +35,15 @@ public class JanelaPrincipalController implements Initializable {
 
     private int nivelAcesso;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/saida.png").toExternalForm());
+        ImageView sairIcone = new ImageView(salvar);
+        sairIcone.setFitHeight(13);
+        sairIcone.setFitWidth(13);
+        buttonSair.setGraphic(sairIcone);
+    }
+
     @FXML
     void agenda(ActionEvent event) {
         try {
@@ -108,14 +117,5 @@ public class JanelaPrincipalController implements Initializable {
 
     private void atualizarVisibilidadeBotoes() {
         buttonUsuarios.setVisible(nivelAcesso == 1);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/saida.png").toExternalForm());
-        ImageView sairIcone = new ImageView(salvar);
-        sairIcone.setFitHeight(13);
-        sairIcone.setFitWidth(13);
-        buttonSair.setGraphic(sairIcone);
     }
 }

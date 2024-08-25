@@ -30,6 +30,15 @@ public class EditarClienteController implements Initializable {
 
     private Cliente cliente;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
+        ImageView Salvar = new ImageView(salvar);
+        Salvar.setFitHeight(13);
+        Salvar.setFitWidth(13);
+        BtnSalvar.setGraphic(Salvar);
+    }
+
     @FXML
     void editarCliente(ActionEvent event) {
         String nome = TextFieldNome.getText();
@@ -59,14 +68,5 @@ public class EditarClienteController implements Initializable {
         TextFieldNome.setText(cliente.getNome());
         TextFieldCpf.setText(cliente.getCpf());
         TextFieldTelefone.setText(cliente.getTelefone());
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Image salvar = new Image(getClass().getResource("/org/example/petshop/icons/salvar.png").toExternalForm());
-        ImageView Salvar = new ImageView(salvar);
-        Salvar.setFitHeight(13);
-        Salvar.setFitWidth(13);
-        BtnSalvar.setGraphic(Salvar);
     }
 }
